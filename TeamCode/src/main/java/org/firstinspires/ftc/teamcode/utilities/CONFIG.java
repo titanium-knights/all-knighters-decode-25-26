@@ -12,4 +12,5 @@ public class CONFIG {
 
     // servos
     public static String sortingServo = "sortingServo";
+    public static String intakeServo = "intakeServo";
 }

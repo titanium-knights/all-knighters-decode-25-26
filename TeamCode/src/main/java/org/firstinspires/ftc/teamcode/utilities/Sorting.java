@@ -1,11 +1,12 @@
 package org.firstinspires.ftc.teamcode.utilities;
 
-import static java.lang.Math.min;
-
-import com.qualcomm.robotcore.hardware.DcMotor;
+import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+
+@Configurable
 
 public class Sorting {
     public static Telemetry telemetry;
@@ -31,6 +32,10 @@ public class Sorting {
     public void toNeutral() {
         sortingServo.setPosition(toNeutralPos);
         telemetry.addLine(Double.toString(sortingServo.getPosition()));
+    }
+
+    public double getPosition() {
+        return (sortingServo.getPosition());
     }
 
 }

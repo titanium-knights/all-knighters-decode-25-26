@@ -8,7 +8,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 //config why not work
 @Configurable
-public class CameraAngel {
+public class CameraAngle {
 
     Servo cameraServo;
 

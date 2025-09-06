@@ -15,4 +15,5 @@ public class CONFIG {
     public static String intakeServo = "intakeServo";
     public static String launchServo = "launchServo";
     public static String releaseServo = "releaseServo";
+    public static String cameraServo = "cameraServo";
 }

@@ -8,30 +8,31 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 //config why not work
 @Configurable
-public class Launch {
+public class CameraAngle {
 
-    Servo launchServo;
+    Servo cameraServo;
 
     // TODO: VALUES RANDOM + CONFIG BROKE !!
 
-    public Launch(HardwareMap hmap, Telemetry telemetry) {
-        this.launchServo = hmap.servo.get(CONFIG.launchServo);
-        this.launchServo.setDirection(Servo.Direction.FORWARD);
+    public CameraAngle(HardwareMap hmap, Telemetry telemetry) {
+        this.cameraServo = hmap.servo.get(CONFIG.cameraServo);
+        this.cameraServo.setDirection(Servo.Direction.FORWARD);
         this.telemetry = telemetry;
     }
 
     public static Telemetry telemetry;
-    public static double launchPower = 0.9;
+    public static double cameraServoPower = 0.9;
 
-    public void launchRun(){
-        launchServo.setPosition(launchPower);
-        telemetry.addLine(" launch running");
+    public void releaseRun(){
+        cameraServo.setPosition(cameraServoPower);
+        telemetry.addLine(" camera running");
         telemetry.update();
     }
 
     public double getPosition() {
-        return (launchServo.getPosition());
+        return (cameraServo.getPosition());
     }
 
 
 }
+

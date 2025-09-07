@@ -11,6 +11,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  * The instance of this object should be passed to any TeleopState to provide access to utility classes
  * This prevents the need to pass references to several utility classes to each TeleopState
  */
+
 public class SubsystemManager {
     public SimpleMecanumDrive drive;
     public Sorting sorter;

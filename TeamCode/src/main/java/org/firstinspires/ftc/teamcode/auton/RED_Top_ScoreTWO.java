@@ -18,7 +18,6 @@ import org.firstinspires.ftc.teamcode.utilities.Sorting;
 
 @Autonomous(name = "RED_Top_ScoreTWO")
 public class RED_Top_ScoreTWO {
-    private int side = 1;
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -28,13 +27,33 @@ public class RED_Top_ScoreTWO {
     public CameraAngle cameraAngle;
     public Sorting sorting;
 
-    private final Pose RED_Top_StartPoint = new Pose(m(24,side), 120, Math.toRadians(135));
-    private final Pose RED_Top_StartPoint_Turn = new Pose(m(24,side), 120, Math.toRadians(270));
-    private final Pose RED_Top_PickingUpFIRST = new Pose(m(24,side), 84, Math.toRadians(270));
+    private final boolean isRed = true;
+    private double m(double init, boolean isRed) {
+        if (isRed) { return init; }
+        else { return 144 - init; }
+    }
+    private double mr(double init, boolean isRed) {
+        if (isRed) { return Math.toRadians(init); }
+        else {
+            double result =
+                    Math.atan2(
+                            Math.sin(Math.toRadians(init)),
+                            -1 * Math.cos(Math.toRadians(init))
+                    );
+            if (result < 0) {
+                result = 360 + result;
+            }
+            return result;
+        }
+    }
+
+    private final Pose RED_Top_StartPoint = new Pose(m(24,isRed), 120, mr(135,isRed));
+    private final Pose RED_Top_StartPoint_Turn = new Pose(m(24,isRed), 120, mr(270,isRed));
+    private final Pose RED_Top_PickingUpFIRST = new Pose(m(24,isRed), 84, mr(270,isRed));
     //dropping off first would be going to RED_Top_StartPoint_Turn + RED_Top_StartPoint
     //then you would RED_Top_StartPoint_Turn again and go to:
 
-    private final Pose RED_Top_PickingUpSECOND = new Pose(m(24,side), 60, Math.toRadians(270));
+    private final Pose RED_Top_PickingUpSECOND = new Pose(m(24,isRed), 60, mr(270,isRed));
     //dropping off second would be going to RED_Top_StartPoint_Turn + RED_Top_StartPoint
 
     //TODO: Wrong numbers + no park ( do we need a park?)

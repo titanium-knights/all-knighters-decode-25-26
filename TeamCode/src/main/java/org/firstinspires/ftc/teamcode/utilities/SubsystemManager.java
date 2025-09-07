@@ -24,7 +24,7 @@ public class SubsystemManager {
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
-        sorting = new Sorting(hmap);
+        sorting = new Sorting(hmap, telemetry);
         release = new Release(hmap, telemetry);
         cameraAngle = new CameraAngle(hmap, telemetry);
         launch = new Launch(hmap, telemetry);

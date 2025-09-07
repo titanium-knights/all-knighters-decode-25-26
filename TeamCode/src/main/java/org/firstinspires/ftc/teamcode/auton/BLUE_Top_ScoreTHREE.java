@@ -1,15 +1,15 @@
 package org.firstinspires.ftc.teamcode.auton;
 
-
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
-import com.pedropathing.paths.Path;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.CameraAngle;
 import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Launch;
@@ -17,7 +17,7 @@ import org.firstinspires.ftc.teamcode.utilities.Release;
 import org.firstinspires.ftc.teamcode.utilities.Sorting;
 
 @Autonomous(name = "BLUE_Top_ScoreTHREE")
-public class BLUE_Top_ScoreTHREE {
+public class BLUE_Top_ScoreTHREE extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -158,21 +158,21 @@ public class BLUE_Top_ScoreTHREE {
     @Override
     public void init() {
         pathTimer = new Timer();
-        Constants.setConstants(FConstants.class, LConstants.class);
+//        Constants.setConstants(FConstants.class, LConstants.class);
         opmodeTimer = new Timer();
 
         opmodeTimer.resetTimer();
 
-        follower = new Follower(hardwareMap);
+        follower = Constants.createFollower(hardwareMap);
         follower.setStartingPose(StartPoint);
 
         buildPaths();
         //TODO: give hardware map the same name when we figure it out
-        sorting = new Sorting(hmap, telemetry);
-        release = new Release(hmap, telemetry);
-        cameraAngle = new CameraAngle(hmap, telemetry);
-        launch = new Launch(hmap, telemetry);
-        intake = new Intake(hmap, telemetry);
+        sorting = new Sorting(hardwareMap, telemetry);
+        release = new Release(hardwareMap, telemetry);
+        cameraAngle = new CameraAngle(hardwareMap, telemetry);
+        launch = new Launch(hardwareMap, telemetry);
+        intake = new Intake(hardwareMap, telemetry);
 
         //TODO: add the position you would want everything to start at here like claw.closed()
     }

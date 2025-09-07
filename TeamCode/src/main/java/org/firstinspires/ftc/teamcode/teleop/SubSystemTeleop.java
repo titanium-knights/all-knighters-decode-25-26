@@ -32,7 +32,7 @@ public class SubSystemTeleop {
 
     public void loop(){
 
-        if (gamepad1.left_trigger) {
+        if (gamepad1.left_trigger > 0.5) {
             intake.intakeRun();
             //add code here to make sure it automaticly sorts the colors after this
             if(color="green"){//this part is with the camera
@@ -49,7 +49,7 @@ public class SubSystemTeleop {
         }
 
 
-        if (gamepad1.right_trigger) {
+        if (gamepad1.right_trigger > 0.5) {
             launch.launchRun();
         } else {
             launch.launchStop();

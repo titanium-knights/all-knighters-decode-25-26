@@ -14,9 +14,9 @@ public class Sorting {
     public static final double toGreenPos = 1.0;
     public static final double toNeutralPos = 0.0;
 
-    Servo sortingServo;
+    static Servo sortingServo;
     public Sorting(HardwareMap hmap, Telemetry telemetry) {
-        this.sortingServo = hmap.servo.get(CONFIG.sortingServo);
+        sortingServo = hmap.servo.get(CONFIG.sortingServo);
     }
 
     public void toPurple() {

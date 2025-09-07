@@ -27,8 +27,18 @@ import org.firstinspires.ftc.teamcode.utilities.Sorting;
 
 
 public class Teleop {
-    private SubsystemManager subsystemManager;
-    public void sortGreen(Gamepad gamepad) {
+    Sorting sorting;
+    SimpleMecanumDrive drive;
+    Intake intake;
+    Launch launch;
+    Release release;
 
+    private SubsystemManager subsystemManager;
+    public void sort(Telemetry telemetry, Gamepad gamepad) {
+        if(gamepad.dpad_left) {
+            subsystemManager.sorting.toGreen();
+        } else if(gamepad.dpad_right) {
+            subsystemManager.sorting.toPurple();
+        }
     }
 }

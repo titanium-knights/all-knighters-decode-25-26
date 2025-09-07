@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.utilities.Launch;
 import org.firstinspires.ftc.teamcode.utilities.Release;
 import org.firstinspires.ftc.teamcode.utilities.SimpleMecanumDrive;
 import org.firstinspires.ftc.teamcode.utilities.Sorting;
+import org.firstinspires.ftc.teamcode.utilities.SubsystemManager;
 
 @TeleOp(name="subSystem Only Teleop")
 public class subSystemTeleop {
@@ -24,14 +25,10 @@ public class subSystemTeleop {
     SimpleMecanumDrive drive;
 
     ElapsedTime runtime = new ElapsedTime();
+    public SubsystemManager subsystemManager;
 
     public void init() {
-        this.drive = new SimpleMecanumDrive(hardwareMap);
-        this.launch = new Launch(hardwareMap, telemetry);
-        this.release = new Release(hardwareMap, telemetry);
-        this.intake = new Intake(hardwareMap, telemetry);
-        this.cameraAngle = new CameraAngle(hardwareMap, telemetry);
-        this.sorting = new Sorting(hardwareMap, telemetry);
+
     }
 
     public void loop(){

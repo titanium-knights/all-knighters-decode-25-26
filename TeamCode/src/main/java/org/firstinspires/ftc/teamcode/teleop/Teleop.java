@@ -27,6 +27,7 @@ public class Teleop extends OpMode {
     @Override
     public void init() {
         subsystemManager = new SubsystemManager(hardwareMap, telemetry);
+        subsystemManager.sorting.toNeutral();
     }
 
     @Override

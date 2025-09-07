@@ -37,8 +37,8 @@ public class OnlyDrive extends OpMode {
         }
 
         telemetry.update();
-        telemetry.addData("left stick x: ", gamepad2.left_stick_x);
-        telemetry.addData("left stick y: ", gamepad2.left_stick_y);
-        telemetry.addData("right stick x: ", gamepad2.right_stick_x);
+        telemetry.addData("left stick x: ", gamepad1.left_stick_x);
+        telemetry.addData("left stick y: ", gamepad1.left_stick_y);
+        telemetry.addData("right stick x: ", gamepad1.right_stick_x);
     }
 }

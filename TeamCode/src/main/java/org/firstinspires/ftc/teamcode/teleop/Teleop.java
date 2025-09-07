@@ -3,8 +3,6 @@ package org.firstinspires.ftc.teamcode.teleop;
 import static java.lang.Math.abs;
 
 import android.widget.Button;
-
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -21,24 +19,16 @@ import org.firstinspires.ftc.teamcode.utilities.Release;
 import org.firstinspires.ftc.teamcode.utilities.SimpleMecanumDrive;
 import org.firstinspires.ftc.teamcode.utilities.Sorting;
 
-
-
-
-
-
 public class Teleop {
-    Sorting sorting;
-    SimpleMecanumDrive drive;
-    Intake intake;
-    Launch launch;
-    Release release;
-
     private SubsystemManager subsystemManager;
-    public void sort(Telemetry telemetry, Gamepad gamepad) {
-        if(gamepad.dpad_left) {
+
+    public void loop(Telemetry telemetry, Gamepad gamepad1) {
+
+        if(gamepad1.dpad_left) {
             subsystemManager.sorting.toGreen();
-        } else if(gamepad.dpad_right) {
+        } else if(gamepad1.dpad_right) {
             subsystemManager.sorting.toPurple();
         }
+
     }
 }

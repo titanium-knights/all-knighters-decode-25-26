@@ -21,14 +21,23 @@ public class CameraAngle {
     }
 
     public static Telemetry telemetry;
-    public static double cameraServoPower = 0.9;
+    public static final double cameraAprilTagPos = 1.0;
+    public static final double cameraColorPos = 0.0;
 
 
-    public void releaseRun(){
-        cameraServo.setPosition(cameraServoPower);
-        telemetry.addLine(" camera running");
+    public void cameraAprilTag(){
+        cameraServo.setPosition(cameraAprilTagPos);
+        telemetry.addLine(" camera facing April Tag");
         telemetry.update();
     }
+
+    public void cameraColor(){
+        cameraServo.setPosition(cameraColorPos);
+        telemetry.addLine(" camera facing balls (detecting color");
+        telemetry.update();
+    }
+
+
 
     public double getPosition() {
         return (cameraServo.getPosition());

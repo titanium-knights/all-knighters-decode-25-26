@@ -14,7 +14,7 @@ public class Drive extends OpMode {
     @Override
     public void init() {
         // Now hardwareMap is valid because we're extending OpMode
-        subsystemManager = new SubsystemManager(hardwareMap);
+        subsystemManager = new SubsystemManager(hardwareMap, telemetry);
     }
 
     @Override

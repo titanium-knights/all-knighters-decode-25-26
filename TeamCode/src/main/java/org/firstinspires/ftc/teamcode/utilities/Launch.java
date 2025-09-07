@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.utilities;
 
 import com.bylazar.configurables.annotations.Configurable;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -10,33 +11,34 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 @Configurable
 public class Launch {
 
-    Servo launchServo;
+    public DcMotor launchMotor;
+    public static Telemetry telemetry;
+    public static double launchPower = 0.9;
 
     // TODO: VALUES RANDOM + CONFIG BROKE !!
 
     public Launch(HardwareMap hmap, Telemetry telemetry) {
-        this.launchServo = hmap.servo.get(CONFIG.launchServo);
-        this.launchServo.setDirection(Servo.Direction.FORWARD);
+        this.launchMotor = hmap.dcMotor.get(CONFIG.launchMotor);
+        this.launchMotor.setDirection(DcMotor.Direction.FORWARD);
         this.telemetry = telemetry;
     }
 
-    public static Telemetry telemetry;
-    public static double launchPower = 0.9;
+
 
     public void launchRun(){
-        launchServo.setPosition(launchPower);
+        launchMotor.setPower(launchPower);
         telemetry.addLine(" launch running");
         telemetry.update();
     }
 
     public void launchStop(){
-        launchServo.setPosition(0.0);
+        launchMotor.setPower(0.0);
         telemetry.addLine(" launch stoped");
         telemetry.update();
     }
 
-    public double getPosition() {
-        return (launchServo.getPosition());
+    public double getPower() {
+        return (launchMotor.getPower());
     }
 
 

@@ -29,6 +29,12 @@ public class Launch {
         telemetry.update();
     }
 
+    public void launchStop(){
+        launchServo.setPosition(0.0);
+        telemetry.addLine(" launch stoped");
+        telemetry.update();
+    }
+
     public double getPosition() {
         return (launchServo.getPosition());
     }

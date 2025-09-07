@@ -29,6 +29,12 @@ public class Intake {
         telemetry.update();
     }
 
+    public void intakeStop(){
+        intakeServo.setPosition(0.0);
+        telemetry.addLine(" intake stoped");
+        telemetry.update();
+    }
+
     public double getPosition() {
         return (intakeServo.getPosition());
     }

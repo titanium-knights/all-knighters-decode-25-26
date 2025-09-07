@@ -23,6 +23,7 @@ public class CameraAngle {
     public static Telemetry telemetry;
     public static double cameraServoPower = 0.9;
 
+
     public void releaseRun(){
         cameraServo.setPosition(cameraServoPower);
         telemetry.addLine(" camera running");

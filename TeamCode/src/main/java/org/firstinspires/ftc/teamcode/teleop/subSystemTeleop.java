@@ -35,9 +35,20 @@ public class subSystemTeleop {
 
         if (gamepad1.left_trigger) {
             intake.intakeRun();
+            //add code here to make sure it automaticly sorts the colors after this
+            if(color="green"){//this part is with the camera
+                sorting.toGreen();
+            }
+            if(color="purple"){
+                sorting.toPurple();
+            }
+            else(color="neutral"){
+                sorting.toNeutral();
+            }
         } else {
             intake.intakeStop();
-        }//add code here to make sure it automaticly sorts the colors after this
+        }
+
 
         if (gamepad1.right_trigger) {
             launch.launchRun();

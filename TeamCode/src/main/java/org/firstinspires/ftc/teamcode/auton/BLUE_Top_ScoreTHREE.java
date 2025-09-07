@@ -9,7 +9,6 @@ import com.pedropathing.paths.Path;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.pedropathing.pathgen.Point;
 
 import org.firstinspires.ftc.teamcode.utilities.CameraAngle;
 import org.firstinspires.ftc.teamcode.utilities.Intake;
@@ -19,7 +18,6 @@ import org.firstinspires.ftc.teamcode.utilities.Sorting;
 
 @Autonomous(name = "BLUE_Top_ScoreTHREE")
 public class BLUE_Top_ScoreTHREE {
-    private boolean isBLUE = false;
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -29,16 +27,36 @@ public class BLUE_Top_ScoreTHREE {
     public CameraAngle cameraAngle;
     public Sorting sorting;
 
-    private final Pose StartPoint = new Pose(m(24,isBLUE), 120, Math.toRadians(mr(135, isBLUE)));
-    private final Pose StartPoint_Turn = new Pose(m(24,isBLUE), 120, Math.toRadians(mr(270,isBLUE)));
-    private final Pose PickingUpFIRST = new Pose(m(24,isBLUE), 84, Math.toRadians(mr(270, isBLUE)));
+    private final boolean isRed = false;
+    private double m(double init, boolean isRed) {
+        if (isRed) { return init; }
+        else { return 144 - init; }
+    }
+    private double mr(double init, boolean isRed) {
+        if (isRed) { return Math.toRadians(init); }
+        else {
+            double result =
+                    Math.atan2(
+                            Math.sin(Math.toRadians(init)),
+                            -1 * Math.cos(Math.toRadians(init))
+                    );
+            if (result < 0) {
+                result = 360 + result;
+            }
+            return result;
+        }
+    }
+
+    private final Pose StartPoint = new Pose(m(24,isRed), 120, Math.toRadians(mr(135, isRed)));
+    private final Pose StartPoint_Turn = new Pose(m(24,isRed), 120, Math.toRadians(mr(270,isRed)));
+    private final Pose PickingUpFIRST = new Pose(m(24,isRed), 84, Math.toRadians(mr(270, isRed)));
     //dropping off first would be going to StartPoint_Turn + StartPoint
     //then you would StartPoint_Turn again and go to:
 
-    private final Pose PickingUpSECOND = new Pose(m(24,isBLUE), 60, Math.toRadians(mr(270, isBLUE)));
+    private final Pose PickingUpSECOND = new Pose(m(24,isRed), 60, Math.toRadians(mr(270, isRed)));
     //dropping off second would be going to StartPoint_Turn + StartPoint
 
-    private final Pose PickingUpTHIRD = new Pose(m(24,isBLUE), 36, Math.toRadians(mr(270, isBLUE)));
+    private final Pose PickingUpTHIRD = new Pose(m(24,isRed), 36, Math.toRadians(mr(270, isRed)));
     //dropping off second would be going to StartPoint_Turn + StartPoint
 
     //TODO: Wrong numbers + no park ( do we need a park?)
@@ -51,37 +69,49 @@ public class BLUE_Top_ScoreTHREE {
         //do i need to add a path to the begining and end or nah
 
         ScoreFIRST = follower.pathBuilder()
-                .addPath((new BezierLine(new Point(StartPoint), new Point(StartPoint_Turn))))
-                .setLinearHeadingInterpolation(StartPoint.getHeading(),   StartPoint_Turn.getHeading());
-                .addPath((new BezierLine(new Point(StartPoint_Turn), new Point(PickingUpFIRST))))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   PickingUpFIRST.getHeading());
-                .addPath((new BezierLine(new Point(PickingUpFIRST), new Point(StartPoint_Turn))))
-                .setLinearHeadingInterpolation(PickingUpFIRST.getHeading(),   StartPoint_Turn.getHeading());
-                .addPath((new BezierLine(new Point(StartPoint_Turn), new Point(StartPoint))))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading());
+                .addPath(new BezierLine(StartPoint, StartPoint_Turn))
+                .setLinearHeadingInterpolation(StartPoint.getHeading(), StartPoint_Turn.getHeading())
+                
+                .addPath(new BezierLine(StartPoint_Turn, PickingUpFIRST))
+                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(), PickingUpFIRST.getHeading())
+                
+                .addPath(new BezierLine(PickingUpFIRST, StartPoint_Turn))
+                .setLinearHeadingInterpolation(PickingUpFIRST.getHeading(), StartPoint_Turn.getHeading())
+                
+                .addPath(new BezierLine(StartPoint_Turn, StartPoint))
+                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading())
+                
                 .build();
 
 
         ScoreSECOND = follower.pathBuilder()
-                .addPath((new BezierLine(new Point(StartPoint), new Point(StartPoint_Turn))))
-                .setLinearHeadingInterpolation(StartPoint.getHeading(),   StartPoint_Turn.getHeading());
-                .addPath((new BezierLine(new Point(StartPoint_Turn), new Point(PickingUpSECOND))))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   PickingUpSECOND.getHeading());
-                .addPath((new BezierLine(new Point(PickingUpSECOND), new Point(StartPoint_Turn))))
-                .setLinearHeadingInterpolation(PickingUpSECOND.getHeading(),   StartPoint_Turn.getHeading());
-                .addPath((new BezierLine(new Point(StartPoint_Turn), new Point(StartPoint))))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading());
+                .addPath(new BezierLine(StartPoint, StartPoint_Turn))
+                .setLinearHeadingInterpolation(StartPoint.getHeading(), StartPoint_Turn.getHeading())
+
+                .addPath(new BezierLine(StartPoint_Turn, PickingUpSECOND))
+                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(), PickingUpSECOND.getHeading())
+
+                .addPath(new BezierLine(PickingUpSECOND, StartPoint_Turn))
+                .setLinearHeadingInterpolation(PickingUpSECOND.getHeading(), StartPoint_Turn.getHeading())
+
+                .addPath(new BezierLine(StartPoint_Turn, StartPoint))
+                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading())
+
                 .build();
 
         ScoreTHIRD = follower.pathBuilder()
-                .addPath((new BezierLine(new Point(StartPoint), new Point(StartPoint_Turn))))
-                .setLinearHeadingInterpolation(StartPoint.getHeading(),   StartPoint_Turn.getHeading());
-                .addPath((new BezierLine(new Point(StartPoint_Turn), new Point(PickingUpTHIRD))))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   PickingUpTHIRD.getHeading());
-                .addPath((new BezierLine(new Point(PickingUpTHIRD), new Point(StartPoint_Turn))))
-                .setLinearHeadingInterpolation(PickingUpTHIRD.getHeading(),   StartPoint_Turn.getHeading());
-                .addPath((new BezierLine(new Point(StartPoint_Turn), new Point(StartPoint))))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading());
+                .addPath(new BezierLine(StartPoint, StartPoint_Turn))
+                .setLinearHeadingInterpolation(StartPoint.getHeading(), StartPoint_Turn.getHeading())
+
+                .addPath(new BezierLine(StartPoint_Turn, PickingUpTHIRD))
+                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   PickingUpTHIRD.getHeading())
+
+                .addPath(new BezierLine(PickingUpTHIRD, StartPoint_Turn))
+                .setLinearHeadingInterpolation(PickingUpTHIRD.getHeading(),   StartPoint_Turn.getHeading())
+
+                .addPath(new BezierLine(StartPoint_Turn, StartPoint))
+                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading())
+
                 .build();
 
     }

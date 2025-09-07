@@ -19,15 +19,17 @@ public class SubsystemManager {
     public CameraAngle cameraAngle;
     public Launch launch;
     public Intake intake;
+    public AngleThing angleThing;
 
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
-        sorting = new Sorting(hmap, telemetry);
+        sorting = new Sorting(hmap);
         release = new Release(hmap, telemetry);
         cameraAngle = new CameraAngle(hmap, telemetry);
         launch = new Launch(hmap, telemetry);
         intake = new Intake(hmap, telemetry);
+        angleThing = new AngleThing(hmap, telemetry);
 
     }
 }

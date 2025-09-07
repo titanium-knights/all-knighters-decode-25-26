@@ -12,6 +12,8 @@ public class CONFIG {
 
     // servos
     public static String sortingServo = "sortingServo";
+
+    public static String angleThingServo = "angleThingServo";
     public static String intakeMotor = "intakeMotor";
     public static String launchMotor = "launchMotor";
     public static String releaseServo = "releaseServo";

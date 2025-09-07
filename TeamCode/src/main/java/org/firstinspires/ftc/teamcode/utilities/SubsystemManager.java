@@ -14,11 +14,20 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class SubsystemManager {
     public SimpleMecanumDrive drive;
-    public Sorting sorter;
+    public Sorting sorting;
+    public Release release;
+    public CameraAngle cameraAngle;
+    public Launch launch;
+    public Intake intake;
 
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
-        sorter = new Sorting(hmap, telemetry);
+        sorting = new Sorting(hmap, telemetry);
+        release = new Release(hmap, telemetry);
+        cameraAngle = new CameraAngle(hmap, telemetry);
+        launch = new Launch(hmap, telemetry);
+        intake = new Intake(hmap, telemetry);
+
     }
 }

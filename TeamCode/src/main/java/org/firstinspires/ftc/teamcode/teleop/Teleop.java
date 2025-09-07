@@ -18,12 +18,6 @@ import org.firstinspires.ftc.teamcode.utilities.SubsystemManager;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-import org.firstinspires.ftc.teamcode.utilities.Intake;
-import org.firstinspires.ftc.teamcode.utilities.Launch;
-import org.firstinspires.ftc.teamcode.utilities.Release;
-import org.firstinspires.ftc.teamcode.utilities.SimpleMecanumDrive;
-import org.firstinspires.ftc.teamcode.utilities.Sorting;
-
 @TeleOp(name="Teleop")
 public class Teleop extends OpMode {
     private SubsystemManager subsystemManager;
@@ -66,19 +60,14 @@ public class Teleop extends OpMode {
             sortingActive = false;
         }
 
-
-        //sorting is manual for now
-        if (gamepad1.dpad_left) {
-            subsystemManager.sorting.toGreen();
-        } else {
-            subsystemManager.sorting.toNeutral();
+        if(gamepad1.dpad_left) {
+            subsystemManager.angleThing.toCloseRange();
+        } else if(gamepad1.dpad_up) {
+            subsystemManager.angleThing.toMidRange();
+        } else if(gamepad1.dpad_right) {
+            subsystemManager.angleThing.toFarRange();
         }
 
-        if (gamepad1.dpad_right) {
-            subsystemManager.sorting.toPurple();
-        } else {
-            subsystemManager.sorting.toNeutral();
-        }
 
         if (gamepad1.right_trigger > 0.5) {
             subsystemManager.launch.launchRun();

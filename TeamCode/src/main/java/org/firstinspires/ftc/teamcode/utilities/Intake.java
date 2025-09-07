@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.utilities;
 
 import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -10,33 +10,32 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 @Configurable
 public class Intake {
 
-    Servo intakeServo;
+    public DcMotor intakeMotor;
+    public static Telemetry telemetry;
+    public static double intakePower = 0.9;
 
     // TODO: VALUES RANDOM + CONFIG BROKE !!
 
     public Intake(HardwareMap hmap, Telemetry telemetry) {
-        this.intakeServo = hmap.servo.get(CONFIG.intakeServo);
-        this.intakeServo.setDirection(Servo.Direction.FORWARD);
+        this.intakeMotor = hmap.dcMotor.get(CONFIG.intakeMotor);
+        this.intakeMotor.setDirection(DcMotor.Direction.FORWARD);
         this.telemetry = telemetry;
     }
 
-    public static Telemetry telemetry;
-    public static double intakePower = 0.9;
-
     public void intakeRun(){
-        intakeServo.setPosition(intakePower);
+        intakeMotor.setPower(intakePower);
         telemetry.addLine(" intake running");
         telemetry.update();
     }
 
     public void intakeStop(){
-        intakeServo.setPosition(0.0);
+        intakeMotor.setPower(0.0);
         telemetry.addLine(" intake stoped");
         telemetry.update();
     }
 
-    public double getPosition() {
-        return (intakeServo.getPosition());
+    public double getPower() {
+        return (intakeMotor.getPower());
     }
 
 

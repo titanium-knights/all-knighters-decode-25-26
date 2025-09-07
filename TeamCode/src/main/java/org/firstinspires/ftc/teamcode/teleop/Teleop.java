@@ -32,6 +32,7 @@ public class Teleop extends OpMode {
 
     @Override
     public void loop() {
+        //sorting is manual for now
         if (gamepad1.dpad_left) {
             subsystemManager.sorting.toGreen();
         } else {

@@ -25,7 +25,7 @@ public class SubSystemTeleop {
 
     ElapsedTime runtime = new ElapsedTime();
     public SubsystemManager subsystemManager;
-
+    public static String color = "a";
     public void init() {
 
     }
@@ -34,14 +34,14 @@ public class SubSystemTeleop {
 
         if (gamepad1.left_trigger > 0.5) {
             intake.intakeRun();
-            //add code here to make sure it automaticly sorts the colors after this
-            if(color="green"){//this part is with the camera
+            //add code here to make sure it automatically sorts the colors after this
+            if(color.equals("green")){//this part is with the camera
                 sorting.toGreen();
             }
-            if(color="purple"){
+            if(color.equals("purple")){
                 sorting.toPurple();
             }
-            else(color="neutral"){
+            else if (color.equals("neutral")){
                 sorting.toNeutral();
             }
         } else {

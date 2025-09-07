@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
+//ts is theoretical
 public class AngleThing {
     public static Telemetry telemetry;
     Servo angleThingServo;

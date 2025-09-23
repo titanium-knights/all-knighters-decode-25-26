@@ -21,6 +21,9 @@ public class SubsystemManager {
     public Intake intake;
     public AngleThing angleThing;
 
+    public Holes holeOne;
+    public Holes holeTwo;
+
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
@@ -30,6 +33,8 @@ public class SubsystemManager {
         launch = new Launch(hmap, telemetry);
         intake = new Intake(hmap, telemetry);
         angleThing = new AngleThing(hmap, telemetry);
+        holeOne = new Holes(hmap, telemetry);
+        holeTwo = new Holes(hmap, telemetry);
 
     }
 }

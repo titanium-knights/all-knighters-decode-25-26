@@ -24,8 +24,15 @@ public class Teleop extends OpMode {
     public static String color = "p";
 
     //time stuff
-    private final ElapsedTime sortingTimer = new ElapsedTime(); //this may or may not work
+    private final ElapsedTime sortingTimer = new ElapsedTime();
+    private final ElapsedTime holesTimer = new ElapsedTime();
+
+    public boolean holesActive = false;
     public boolean sortingActive = false;
+
+    double[] stepTimes = {2.0, 3.5, 5.0};
+
+    public int holeInt = 0;
 
 
     @Override
@@ -40,18 +47,16 @@ public class Teleop extends OpMode {
         if (gamepad1.left_trigger > 0.5) {
             subsystemManager.intake.intakeRun();
 
-            if(!sortingActive){  // only reset when starting
+            if (!sortingActive) {  // only reset when starting
                 sortingTimer.reset();
                 sortingActive = true;
             }
 
-            if(color.equals("green") && sortingTimer.seconds() < 4.5){
+            if (color.equals("green") && sortingTimer.seconds() < 4.5) {
                 subsystemManager.sorting.toGreen();
-            }
-            else if(color.equals("purple") && sortingTimer.seconds() < 4.5){
+            } else if (color.equals("purple") && sortingTimer.seconds() < 4.5) {
                 subsystemManager.sorting.toPurple();
-            }
-            else {
+            } else {
                 subsystemManager.sorting.toNeutral();
             }
 
@@ -60,39 +65,30 @@ public class Teleop extends OpMode {
             sortingActive = false;
         }
 
-        if(gamepad1.dpad_left) {
-            subsystemManager.angleThing.toCloseRange();
-        } else if(gamepad1.dpad_up) {
-            subsystemManager.angleThing.toMidRange();
-        } else if(gamepad1.dpad_right) {
-            subsystemManager.angleThing.toFarRange();
+        if (gamepad1.dpad_left) {
+            if (!holesActive) {
+                holesTimer.reset();
+                holesActive = true;
+                holeInt = 0;
+            }
+
+            for (int i = holeInt; i < stepTimes.length; i++) {
+                if (holesTimer.seconds() < stepTimes[i]) {
+                    if (i == 0) {
+                        subsystemManager.holeOne.toOpenPos("hole one");
+                    } else if (i == 1) {
+                        subsystemManager.holeOne.toClosePos("hole one");
+                        subsystemManager.holeTwo.toOpenPos("hole two");
+                    } else if (i == 2) {
+                        subsystemManager.holeTwo.toClosePos("hole two");
+                    }
+                    holeInt = i + 1;
+                    break;
+                }
+            }
+
         }
 
-
-        if (gamepad1.right_trigger > 0.5) {
-            subsystemManager.launch.launchRun();
-        } else {
-            subsystemManager.launch.launchStop();
-        }
-
-        if (gamepad1.right_bumper) {
-            subsystemManager.release.releaseGreen();
-        } else {
-            subsystemManager.release.releaseNeutral();
-        }
-
-        if (gamepad1.left_bumper) {
-            subsystemManager.release.releasePurple();
-        } else {
-            subsystemManager.release.releaseNeutral();
-        }
-        // this button will be temporary, instead will be replaced with releasing whatever the order
-
-        if(gamepad1.a && subsystemManager.cameraAngle.getPosition()== CameraAngle.cameraAprilTagPos){
-            subsystemManager.cameraAngle.cameraColor();
-        }
-        if(gamepad1.a && subsystemManager.cameraAngle.getPosition()==CameraAngle.cameraColorPos){
-            subsystemManager.cameraAngle.cameraAprilTag();
-        }
     }
 }
+

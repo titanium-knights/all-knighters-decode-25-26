@@ -17,6 +17,8 @@ public class CONFIG {
     public static String holeTwoServo = "holeTwoServo";
     public static String angleThingServo = "angleThingServo";
     public static String intakeMotor = "intakeMotor";
+
+    public static String catapultMotor = "catapultMotor";
     public static String launchMotor = "launchMotor";
     public static String releaseServo = "releaseServo";
     public static String cameraServo = "cameraServo";

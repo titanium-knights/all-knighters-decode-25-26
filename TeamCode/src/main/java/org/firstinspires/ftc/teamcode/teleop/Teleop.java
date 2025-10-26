@@ -46,12 +46,23 @@ public class Teleop extends OpMode {
 
         if (gamepad1.left_trigger > 0.5) {
             subsystemManager.intake.intakeRun();
+            //susbsystemManager.intake2.intakeRun();
 
             if (!sortingActive) {  // only reset when starting
                 sortingTimer.reset();
                 sortingActive = true;
             }
 
+
+//            if(gamepad1.right_trigger > 0.5){
+//                susbsystemManager.outake.outakeRun();
+//                //subsystemManager.outake2.outakeRun();
+//
+//                if (!sortingActive){
+//                    sortingTimer.reset();
+//                    sortingActive = true;
+//                }
+//            }
             if (color.equals("green") && sortingTimer.seconds() < 4.5) {
                 subsystemManager.sorting.toGreen();
             } else if (color.equals("purple") && sortingTimer.seconds() < 4.5) {

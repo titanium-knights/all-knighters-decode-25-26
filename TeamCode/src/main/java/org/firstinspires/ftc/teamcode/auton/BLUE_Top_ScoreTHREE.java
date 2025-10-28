@@ -10,22 +10,16 @@ import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
 
 import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
-import org.firstinspires.ftc.teamcode.utilities.CameraAngle;
-import org.firstinspires.ftc.teamcode.utilities.Intake;
-import org.firstinspires.ftc.teamcode.utilities.Launch;
-import org.firstinspires.ftc.teamcode.utilities.Release;
-import org.firstinspires.ftc.teamcode.utilities.Sorting;
+//import org.firstinspires.ftc.teamcode.utilities.Intake;
+import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
 @Autonomous(name = "BLUE_Top_ScoreTHREE")
 public class BLUE_Top_ScoreTHREE extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
-    public Launch launch;
-    public Release release;
-    public Intake intake;
-    public CameraAngle cameraAngle;
-    public Sorting sorting;
+    public Outtake outtake;
+//    public Intake intake;
 
     private final boolean isRed = false;
     private double m(double init, boolean isRed) {
@@ -167,12 +161,9 @@ public class BLUE_Top_ScoreTHREE extends OpMode {
         follower.setStartingPose(StartPoint);
 
         buildPaths();
-        //TODO: give hardware map the same name when we figure it out
-        sorting = new Sorting(hardwareMap, telemetry);
-        release = new Release(hardwareMap, telemetry);
-        cameraAngle = new CameraAngle(hardwareMap, telemetry);
-        launch = new Launch(hardwareMap, telemetry);
-        intake = new Intake(hardwareMap, telemetry);
+        // TODO: give hardware map the same name when we figure it out
+        outtake = new Outtake(hardwareMap, telemetry);
+//        intake = new Intake(hardwareMap, telemetry);
 
         //TODO: add the position you would want everything to start at here like claw.closed()
     }

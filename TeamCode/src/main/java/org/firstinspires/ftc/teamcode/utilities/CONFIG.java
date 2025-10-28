@@ -9,17 +9,8 @@ public class CONFIG {
     public static String BACK_RIGHT = "br";  // ch motor 3
     public static String FRONT_RIGHT = "fr"; // ch motor 2
     public static String BACK_LEFT = "bl";   // ch motor 1
+    public static String OUTTAKE_L = "outTakeL";
+    public static String OUTTAKE_R = "outTakeR";
 
-    // servos
-    public static String sortingServo = "sortingServo";
-
-    public static String holeOneServo = "holeOneServo";
-    public static String holeTwoServo = "holeTwoServo";
-    public static String angleThingServo = "angleThingServo";
-    public static String intakeMotor = "intakeMotor";
-
-    public static String catapultMotor = "catapultMotor";
-    public static String launchMotor = "launchMotor";
-    public static String releaseServo = "releaseServo";
-    public static String cameraServo = "cameraServo";
+    public static String MIDDLETAKE = "middleTake";
 }

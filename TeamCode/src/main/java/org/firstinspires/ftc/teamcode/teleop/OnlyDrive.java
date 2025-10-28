@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.utilities.SubsystemManager;
 
+@TeleOp(name="OnlyDrive")
 public class OnlyDrive extends OpMode {
     private SubsystemManager subsystemManager;
 

@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.auton;
 
 import android.util.Size;
 
+import androidx.annotation.NonNull;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -12,10 +14,21 @@ import org.firstinspires.ftc.vision.VisionProcessor;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Autonomous(name = "AprilTagTest", group = "Tutorial Code")
 public class AprilTagTest extends LinearOpMode {
+    public enum BallOrder {
+        GPP,
+        PGP,
+        PPG;
+
+        @NonNull
+        @Override
+        public String toString() {
+            return super.toString();
+        }
+    }
 
     /*
      * Camera Calibration Values
@@ -29,8 +42,12 @@ public class AprilTagTest extends LinearOpMode {
     public final boolean calibratedCamera = false;
     private AprilTagProcessor aprilTagProcessor;
 
+    public ArrayList<BallOrder> ballsList = new ArrayList<>();
+
     @Override
     public void runOpMode() throws InterruptedException {
+
+
 
         if (calibratedCamera){
             aprilTagProcessor = AprilTagProcessor.easyCreateWithDefaults();
@@ -55,6 +72,28 @@ public class AprilTagTest extends LinearOpMode {
                     telemetry.addLine(String.format("XYZ %6.1f %6.1f %6.1f  (inch)", detection.ftcPose.x, detection.ftcPose.y, detection.ftcPose.z));
                     telemetry.addLine(String.format("PRY %6.1f %6.1f %6.1f  (deg)", detection.ftcPose.pitch, detection.ftcPose.roll, detection.ftcPose.yaw));
                     telemetry.addLine(String.format("RBE %6.1f %6.1f %6.1f  (inch, deg, deg)", detection.ftcPose.range, detection.ftcPose.bearing, detection.ftcPose.elevation));
+
+                    BallOrder ballOrder = BallOrder.GPP;
+                    boolean ballOrderGot = true;
+                    switch (detection.id) {
+                        case 21:
+                            break;
+                        case 22:
+                            ballOrder = BallOrder.PGP;
+                            break;
+                        case 23:
+                            ballOrder = BallOrder.PPG;
+                            break;
+                        default:
+                            ballOrderGot = false;
+                            break;
+                    }
+
+                    if (ballOrderGot) {
+                        telemetry.addLine(String.format("ball order: %s", ballOrder));
+                        ballsList.add(ballOrder);
+                    }
+
                 } else {
                     telemetry.addLine(String.format("\n==== (ID %d) Unknown", detection.id));
                     telemetry.addLine(String.format("Center %6.0f %6.0f   (pixels)", detection.center.x, detection.center.y));
@@ -65,6 +104,7 @@ public class AprilTagTest extends LinearOpMode {
             telemetry.addLine("\nkey:\nXYZ = X (Right), Y (Forward), Z (Up) dist.");
             telemetry.addLine("PRY = Pitch, Roll & Yaw (XYZ Rotation)");
             telemetry.addLine("RBE = Range, Bearing & Elevation");
+            telemetry.addLine(String.format("\nBall Order History: %s", ballsList.toString()));
 
             telemetry.update();
 

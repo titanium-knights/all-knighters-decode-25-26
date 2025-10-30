@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.timebased.blue.shoot;
 
 public class redSquare_shoot_lastROW {
-    //TODO - This is shooting two balls
+    //TODO - This is shooting two balls THIS IS FOR RED
     //We start on the blue side of small triangle - accross from shoot
     //Go forward to the last row of balls (
     //Turn towards the balls

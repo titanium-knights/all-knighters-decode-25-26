@@ -146,7 +146,6 @@ public class SimpleMecanumDrive {
     public SimpleMecanumDrive drivetrain;
 
     public abstract class AutonMethods extends LinearOpMode {
-
         public void stopDrive() {
             drivetrain.move(0, 0, 0);
             sleep(100);

@@ -1,11 +1,20 @@
 package org.firstinspires.ftc.teamcode.timebased.blue.shoot;
+import org.firstinspires.ftc.teamcode.utilities.SubsystemManager;
 
-public class redSquare_shoot_lastROW {
-    //TODO - This is shooting two balls THIS IS FOR RED
+public class lastRowShootOnly_BLUEalliance {
+    //TODO - This is shooting two balls
+    //stopDrive(), moveBackwards(), moveRight(), moveLeft(), rotateCw(), rotateCcw()
+
     //We start on the blue side of small triangle - accross from shoot
-    //Go forward to the last row of balls (
-    //Turn towards the balls
-    //intake 1 ball
+    //moveForward(3);
+    //rotateCw(90);
+    //inTakeRun();
+    //middleTakeRun();
+    //inTakeStop();
+    //moveForward(1);
+    //moveBackwards(1);
+    //rotateCcw(45);
+
     //go backward
     //turn forward
     // go forward and enter the triangle

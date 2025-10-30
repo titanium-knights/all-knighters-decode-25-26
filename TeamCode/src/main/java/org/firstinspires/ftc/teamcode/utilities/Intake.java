@@ -1,54 +1,42 @@
-//package org.firstinspires.ftc.teamcode.utilities;
-//
-//import com.bylazar.configurables.annotations.Configurable;
-//import com.qualcomm.robotcore.hardware.HardwareMap;
-//import com.qualcomm.robotcore.hardware.DcMotor;
-//
-//
-//import org.firstinspires.ftc.robotcore.external.Telemetry;
-//
-////config why not work
-//@Configurable
-//public class Intake {
-//
-//    public DcMotor intakeMotor;
-//    public DcMotor intakeMotor2;
-//    public static Telemetry telemetry;
-//    public static double intakePower = 0.9;
-//
-//    // TODO: VALUES RANDOM + CONFIG BROKE !!
-//
-//    public Intake(HardwareMap hmap, Telemetry telemetry) {
-//        this.intakeMotor = hmap.dcMotor.get(CONFIG.intakeMotor);
-//        this.intakeMotor.setDirection(DcMotor.Direction.FORWARD);
-//        this.telemetry = telemetry;
-//    }
-//
-////    public Intake2(HardwareMap hmap, Telemetry telemetry) {
-////        this.intakeMotor = hmap.dcMotor.get(CONFIG.intakeMotor2);
-////        this.intakeMotor.setDirection(DcMotor.Direction.FORWARD);
-////        this.telemetry = telemetry;
-////    }
-////
-//
-//
-//    public void intakeRun(){
-//        intakeMotor.setPower(intakePower);
-////        intakeMotor.setPower(intakePower2);
-//        telemetry.addLine(" intake running");
-//        telemetry.update();
-//    }
-//
-//    public void intakeStop(){
-//        intakeMotor.setPower(0.0);
-////        intakeMotor2.setPower(0.0);
-//        telemetry.addLine(" intake stoped");
-//        telemetry.update();
-//    }
-//
-//    public double getPower() {
-//        return (intakeMotor.getPower());
-//    }
-//
-//
-//}
+package org.firstinspires.ftc.teamcode.utilities;
+
+import com.bylazar.configurables.annotations.Configurable;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
+//config why not work
+@Configurable
+public class Intake {
+
+    public static Telemetry telemetry;
+    public static double intakePower = 0.9;
+    public DcMotor inTake;
+    public DcMotor middleTake;
+
+
+    public Intake(HardwareMap hmap, Telemetry telemetry) {
+        this.inTake = hmap.dcMotor.get(CONFIG.INTAKE);
+        this.middleTake = hmap.dcMotor.get(CONFIG.MIDDLETAKE);
+        this.inTake.setDirection(DcMotor.Direction.FORWARD);
+        this.middleTake.setDirection(DcMotor.Direction.REVERSE);
+        this.telemetry = telemetry;
+    }
+
+    public void intakeRun(){
+        inTake.setPower(intakePower);
+        middleTake.setPower(intakePower);
+        telemetry.addLine(" intake is running");
+        telemetry.update();
+    }
+
+    public void intakeStop(){
+        inTake.setPower(0.0);
+        middleTake.setPower(0.0);
+        telemetry.addLine(" intake is stopped");
+        telemetry.update();
+    }
+
+
+}

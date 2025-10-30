@@ -1,4 +1,4 @@
-//package org.firstinspires.ftc.teamcode.auton;
+//package org.firstinspires.ftc.teamcode.timebased.blue.shoot;
 //import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 //import com.qualcomm.robotcore.util.ElapsedTime;
 //@Autonomous(name = "time_park", group = "Linear OpMode")

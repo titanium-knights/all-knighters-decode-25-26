@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.utilities;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -106,6 +108,7 @@ public class SimpleMecanumDrive {
     public double dot(double[] a, double[] b) {
         return a[0] * b[0] + a[1] * b[1];
     }
+
     public void moveFL(double power) {
         fl.setPower(power);
     }
@@ -136,5 +139,59 @@ public class SimpleMecanumDrive {
 
     public void stopBR() {
         br.setPower(0);
+    }
+
+
+    public final double POWER = 1;
+    public SimpleMecanumDrive drivetrain;
+
+    public abstract class AutonMethods extends LinearOpMode {
+
+        public void stopDrive() {
+            drivetrain.move(0, 0, 0);
+            sleep(100);
+        }
+
+        public void moveForward(double x) {
+            double duration = 1080 * x;
+            drivetrain.move(0, -POWER, 0);
+            sleep((int) duration);
+            stopDrive();
+        }
+
+        public void moveBackward(double x) {
+            double duration = 1080 * x;
+            drivetrain.move(0, POWER, 0);
+            sleep((int) duration);
+            stopDrive();
+        }
+
+        public void moveRight(double x) {
+            double duration = 1500 * x;
+            drivetrain.move(POWER, 0, 0);
+            sleep((int) duration);
+            stopDrive();
+        }
+
+        public void moveLeft(double x) {
+            double duration = 1500 * x;
+            drivetrain.move(-POWER, 0, 0);
+            sleep((int) duration);
+            stopDrive();
+        }
+
+        public void rotateCw(double x) {
+            double duration = 8000 * x;
+            drivetrain.move(0, 0, -POWER);
+            sleep((int) duration);
+            stopDrive();
+        }
+
+        public void rotateCcw(double x) {
+            double duration = 8000 * x;
+            drivetrain.move(0, 0, POWER);
+            sleep((int) duration);
+            stopDrive();
+        }
     }
 }

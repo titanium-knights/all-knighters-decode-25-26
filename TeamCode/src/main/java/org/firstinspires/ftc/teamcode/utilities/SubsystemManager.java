@@ -17,10 +17,11 @@ public class SubsystemManager {
 //    public Intake intake;
 
     public Outtake outtake;
+    public Intake intake;
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
         outtake = new Outtake(hmap, telemetry);
-//        intake = new Intake(hmap, telemetry);
+        intake = new Intake(hmap, telemetry);
     }
 }

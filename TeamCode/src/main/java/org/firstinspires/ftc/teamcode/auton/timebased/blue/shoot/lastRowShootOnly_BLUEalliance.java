@@ -15,9 +15,9 @@ public class lastRowShootOnly_BLUEalliance extends AutonMethods {
         // We start on the blue side of small triangle - across from shoot
         moveForward(3);
         rotateCw(90);
+        moveForward(1);
         intakeRun();
         intakeStop();
-        moveForward(1);
         moveBackward(1);
         rotateCw(135);
         // shoots from the back
@@ -28,6 +28,7 @@ public class lastRowShootOnly_BLUEalliance extends AutonMethods {
         // picking up 1 at a time so it picks up 3 times
         moveForward(1);
         intakeRun();
+        sleep(1000);
         intakeStop();
         moveBackward(1);
         rotateCw(135);
@@ -46,8 +47,9 @@ public class lastRowShootOnly_BLUEalliance extends AutonMethods {
 
         outtakeStop();
         // after 3rd, just park?
+        rotateCw(45);
         moveBackward(3);
-        moveBackward(3);
+        moveLeft(3);
 
         // go backward
         // turn forward

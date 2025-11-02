@@ -9,7 +9,7 @@ public class parkOnly_startBottom_BLUEalliance extends AutonMethods {
 
     @Override
     public void runOpMode() {
-       moveForward(0.75);
-       moveLeft(0.75);
+       moveForward(1);
+       moveRight(2.5);
     }
 }

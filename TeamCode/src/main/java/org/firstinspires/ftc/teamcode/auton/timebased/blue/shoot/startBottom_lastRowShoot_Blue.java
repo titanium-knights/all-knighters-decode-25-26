@@ -4,52 +4,53 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.auton.AutonMethods;
 
-@Autonomous(name = "lastRowShootOnly_BLUEalliance", group = "Linear OpMode")
-public class lastRowShootOnly_BLUEalliance extends AutonMethods {
+@Autonomous(name = "lastRowShootOnly_BLUEAlliance", group = "Linear OpMode")
+public class startBottom_lastRowShoot_Blue extends AutonMethods {
 
     @Override
     public void runOpMode() {
         // TODO - This is shooting two balls
-        // stopDrive(), moveBackward(), moveRight(), moveLeft(), rotateCw(), rotateCcw()
+        // stopDrive(), moveBac
+        // kward(), moveRight(), moveLeft(), rotateCw(), rotateCcw()
 
-        // We start on the blue side of small triangle - across from shoot
-        moveForward(3);
-        rotateCw(90);
+        // We start on the red side of small triangle - across from shoot
+        moveForward(3.5); //+.5
+        rotateCcw(90);
         moveForward(1);
         intakeRun();
         intakeStop();
         moveBackward(1);
-        rotateCw(135);
+        rotateCcw(135);
         // shoots from the back
         outtakeRun();
         sleep(1000);
         outtakeStop();
-        rotateCcw(135);
+        rotateCw(135);
         // picking up 1 at a time so it picks up 3 times
         moveForward(1);
         intakeRun();
         sleep(1000);
         intakeStop();
         moveBackward(1);
-        rotateCw(135);
+        rotateCcw(135);
         outtakeRun();
         sleep(1000);
 
         outtakeStop();
-        rotateCcw(135);
+        rotateCw(135);
         moveForward(1);
         intakeRun();
         intakeStop();
         moveBackward(1);
-        rotateCw(135);
+        rotateCcw(135);
         outtakeRun();
         sleep(1000);
 
         outtakeStop();
         // after 3rd, just park?
-        rotateCw(45);
+        rotateCcw(45);
         moveBackward(3);
-        moveLeft(3);
+        moveRight(3);
 
         // go backward
         // turn forward

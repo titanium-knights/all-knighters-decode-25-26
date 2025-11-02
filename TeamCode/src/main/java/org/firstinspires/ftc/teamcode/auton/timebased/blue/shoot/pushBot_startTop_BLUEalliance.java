@@ -11,34 +11,37 @@ public class pushBot_startTop_BLUEalliance extends AutonMethods {
     public void runOpMode() {
         moveForward(2);
         rotateCcw(45);
-        moveRight(1);
-        moveBackward(1);
-        moveLeft(1);
+        moveRight(1.07);
+        moveBackward(1.25);
+        moveLeft(0.9);
         rotateCcw(45);
+        moveLeft(0.25);
         //end of first pick up and drop, we are at basket
 
-        moveRight(2);
+        moveRight(2.38);
         rotateCw(45);
-        moveRight(2);
-        moveBackward(1);
-        moveLeft(2);
+        moveRight(2.4); //0.4 gap or something
+        moveBackward(1.25);
+        moveLeft(4);
         rotateCcw(45);
+        moveLeft(0.25);
         //end of second pick up and drop, we are at basket
 
 
-        moveRight(2);
+        moveRight(2.38);
         rotateCw(45);
-        moveRight(3);
-        moveBackward(1);
-        moveLeft(3);
+        moveRight(3.8);
+        moveBackward(1.25);
+        moveLeft(5.3);
         rotateCcw(45);
+        moveLeft(0.25);
         //end of third pick up and drop, we are at basket
 
-
-        moveRight(2);
+        moveRight(2.38);
         rotateCw(45);
         //park
-        moveRight(3);
+        moveRight(4);
+        moveForward(3.35);
     }
 }
 

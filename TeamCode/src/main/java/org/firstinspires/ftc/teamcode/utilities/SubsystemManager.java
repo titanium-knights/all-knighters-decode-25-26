@@ -14,7 +14,6 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class SubsystemManager {
     public SimpleMecanumDrive drive;
-//    public Intake intake;
 
     public Outtake outtake;
     public Intake intake;

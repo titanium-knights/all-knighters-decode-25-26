@@ -9,7 +9,7 @@ import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
 
-import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 

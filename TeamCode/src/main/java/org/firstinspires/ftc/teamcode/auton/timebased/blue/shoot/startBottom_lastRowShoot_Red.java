@@ -9,6 +9,8 @@ public class startBottom_lastRowShoot_Red extends AutonMethods {
 
     @Override
     public void runOpMode() {
+        super.runOpMode();
+        waitForStart();
         // TODO - This is shooting two balls
         // stopDrive(), moveBackward(), moveRight(), moveLeft(), rotateCw(), rotateCcw()
 
@@ -16,8 +18,8 @@ public class startBottom_lastRowShoot_Red extends AutonMethods {
         moveForward(3);
         rotateCw(90);
         moveForward(1);
-        intakeRun();
-        intakeStop();
+        // intakeRun();
+        // intakeStop();
         moveBackward(1);
         rotateCw(135);
         // shoots from the back
@@ -27,9 +29,9 @@ public class startBottom_lastRowShoot_Red extends AutonMethods {
         rotateCcw(135);
         // picking up 1 at a time so it picks up 3 times
         moveForward(1);
-        intakeRun();
+        // intakeRun();
         sleep(1000);
-        intakeStop();
+        // intakeStop();
         moveBackward(1);
         rotateCw(135);
         outtakeRun();
@@ -38,8 +40,8 @@ public class startBottom_lastRowShoot_Red extends AutonMethods {
         outtakeStop();
         rotateCcw(135);
         moveForward(1);
-        intakeRun();
-        intakeStop();
+        // intakeRun();
+        // intakeStop();
         moveBackward(1);
         rotateCw(135);
         outtakeRun();

@@ -9,6 +9,8 @@ public class pushBot_startTop_REDalliance extends AutonMethods {
 
     @Override
     public void runOpMode() {
+        super.runOpMode();
+        waitForStart();
         moveForward(2);
         rotateCw(45);
         moveLeft(1);

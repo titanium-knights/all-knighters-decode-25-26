@@ -15,14 +15,15 @@ public class lastRowShootOnly_BLUEalliance extends AutonMethods {
     public void runOpMode() {
         // TODO - This is shooting two balls
         // stopDrive(), moveBackward(), moveRight(), moveLeft(), rotateCw(), rotateCcw()
-
+        super.runOpMode();
+        waitForStart();
 
         // We start on the blue side of small triangle - across from shoot
         moveForward(4);
         rotateCw(90);
         moveForward(1);
-        intakeRun();
-        intakeStop();
+        // intakeRun();
+        // intakeStop();
         moveBackward(1);
         rotateCw(135);
         // shoots from the back
@@ -32,9 +33,9 @@ public class lastRowShootOnly_BLUEalliance extends AutonMethods {
         rotateCcw(135);
         // picking up 1 at a time so it picks up 3 times
         moveForward(1.3);
-        intakeRun();
+        // intakeRun();
         sleep(1000);
-        intakeStop();
+        // intakeStop();
         moveBackward(1.3);
         rotateCw(135);
         outtakeRun();
@@ -44,8 +45,8 @@ public class lastRowShootOnly_BLUEalliance extends AutonMethods {
         outtakeStop();
         rotateCcw(135);
         moveForward(1.6);
-        intakeRun();
-        intakeStop();
+        // intakeRun();
+        // intakeStop();
         moveBackward(1.6);
         rotateCw(135);
         outtakeRun();

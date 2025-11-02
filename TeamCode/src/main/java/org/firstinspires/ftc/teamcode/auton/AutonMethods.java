@@ -10,7 +10,7 @@ public abstract class AutonMethods extends LinearOpMode {
 
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
         subsystemManager = new SubsystemManager(hardwareMap, telemetry);
     }
     public final double POWER = 1;
@@ -60,12 +60,12 @@ public abstract class AutonMethods extends LinearOpMode {
 
 
     // INTAKE TINGS
-    public void intakeRun() {
-        subsystemManager.intake.intakeRun();
-    }
-    public void intakeStop() {
-        subsystemManager.intake.intakeStop();
-    }
+//    public void intakeRun() {
+//        subsystemManager.intake.intakeRun();
+//    }
+//    public void intakeStop() {
+//        subsystemManager.intake.intakeStop();
+//    }
 
 
     // OUTTAKE TINGS

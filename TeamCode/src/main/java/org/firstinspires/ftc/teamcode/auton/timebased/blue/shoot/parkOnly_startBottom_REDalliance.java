@@ -9,6 +9,8 @@ public class parkOnly_startBottom_REDalliance extends AutonMethods {
 
     @Override
     public void runOpMode() {
+        super.runOpMode();
+        waitForStart();
         moveForward(1);
         moveLeft(2.5);
     }

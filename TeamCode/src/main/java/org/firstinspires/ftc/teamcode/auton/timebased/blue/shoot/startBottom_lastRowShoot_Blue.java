@@ -4,11 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.auton.AutonMethods;
 
-@Autonomous(name = "lastRowShootOnly_BLUEAlliance", group = "Linear OpMode")
+@Autonomous(name = "startBottom_lastRowShoot_Blue", group = "Linear OpMode")
 public class startBottom_lastRowShoot_Blue extends AutonMethods {
 
     @Override
     public void runOpMode() {
+        super.runOpMode();
+        waitForStart();
         // TODO - This is shooting two balls
         // stopDrive(), moveBac
         // kward(), moveRight(), moveLeft(), rotateCw(), rotateCcw()
@@ -17,8 +19,8 @@ public class startBottom_lastRowShoot_Blue extends AutonMethods {
         moveForward(3.5); //+.5
         rotateCcw(90);
         moveForward(1);
-        intakeRun();
-        intakeStop();
+        // intakeRun();
+        // intakeStop();
         moveBackward(1);
         rotateCcw(135);
         // shoots from the back
@@ -28,9 +30,9 @@ public class startBottom_lastRowShoot_Blue extends AutonMethods {
         rotateCw(135);
         // picking up 1 at a time so it picks up 3 times
         moveForward(1);
-        intakeRun();
+        // intakeRun();
         sleep(1000);
-        intakeStop();
+        // intakeStop();
         moveBackward(1);
         rotateCcw(135);
         outtakeRun();
@@ -39,8 +41,8 @@ public class startBottom_lastRowShoot_Blue extends AutonMethods {
         outtakeStop();
         rotateCw(135);
         moveForward(1);
-        intakeRun();
-        intakeStop();
+        // intakeRun();
+        // intakeStop();
         moveBackward(1);
         rotateCcw(135);
         outtakeRun();

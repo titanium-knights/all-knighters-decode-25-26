@@ -1,0 +1,9 @@
+private final startPointBottom_RED = new Pose( 96, 0, Math.toRadians(90));
+private final startPointBottom_BLUE= new Pose( 48, 0, Math.toRadians(90));
+private final startPointTop_RED= new Pose( 96, , Math.toRadians(90)); //guess timation
+
+
+270 look down
+90 look u
+360/0 look right
+180 look left

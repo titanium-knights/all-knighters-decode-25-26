@@ -1,11 +1,17 @@
 package org.firstinspires.ftc.teamcode.auton.timebased.blue.shoot;
 
+import com.pedropathing.geometry.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.auton.AutonMethods;
 
 @Autonomous(name = "startBottom_lastRowShoot_Blue", group = "Linear OpMode")
 public class startBottom_lastRowShoot_Blue extends AutonMethods {
+
+    private final Pose firstBlueThirdRowFromSmallTriangleBallIntakeForwardPos = new Pose((60), 84, Math.toRadians((90)));
+    private final Pose firstBlueThirdRowFromSmallTriangleBallIntakeForwardToBallPos = new Pose((35), 84, Math.toRadians((0)));
+    private final Pose firstBlueThirdRowFromSmallTriangleBallOuttakeBackwardFromBallPos = new Pose((60), 84, Math.toRadians((135)));
+
 
     @Override
     public void runOpMode() {

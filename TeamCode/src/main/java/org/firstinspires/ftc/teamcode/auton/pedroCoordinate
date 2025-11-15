@@ -1,7 +1,33 @@
-private final startPointBottom_RED = new Pose( 96, 0, Math.toRadians(90));
-private final startPointBottom_BLUE= new Pose( 48, 0, Math.toRadians(90));
-private final startPointTop_RED= new Pose( 96, , Math.toRadians(90)); //guess timation
+map (0,0) -> bottom left
+map (144,144) -> top right
+robot position -> bottom right
 
+private final Pose StartBottom_RED = new Pose(96, 0,Math.toRadians(90));
+private final Pose StartBottom_BLUE = new Pose(65.25, 0,Math.toRadians(90));
+
+private final Pose humanPlayer_RED = new Pose(133.75, 0,Math.toRadians(0));
+private final Pose humanPlayer_BLUE = new Pose(10.25, 0,Math.toRadians(180));
+
+private final Pose groupCPickUp1_RED = new Pose(96, 27.375,Math.toRadians(0));
+private final Pose groupCPickUp1_BLUE = new Pose(48,44.625,Math.toRadians(180));
+
+private final Pose groupCPickUp2_RED = new Pose(126.75, 27.375 ,Math.toRadians(0));
+private final Pose groupCPickUp2_BLUE = new Pose(0,44.625,Math.toRadians(180));
+
+private final Pose groupBPickUp1_RED = new Pose(96,51.375,Math.toRadians(0));
+private final Pose groupBPickUp1_BLUE = new Pose(48,68.625,Math.toRadians(180));
+
+private final Pose groupBPickUp2_RED = new Pose(126.75,51.375,Math.toRadians(0));
+private final Pose groupBPickUp2_BLUE = new Pose(0,68.625,Math.toRadians(180));
+
+private final Pose groupAPickUp1_RED = new Pose(96,75.375,Math.toRadians(0));
+private final Pose groupAPickUp1_BLUE = new Pose(48,92.625,Math.toRadians(180));
+
+private final Pose groupAPickUp2_RED = new Pose(126.75,75.375,Math.toRadians(0));
+private final Pose groupAPickUp2_BLUE = new Pose(0,92.625,Math.toRadians(180));
+
+private final Pose shootAtBasket_RED = new Pose(120,120,Math.toRadians(45));
+private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
 270 look down
 90 look u

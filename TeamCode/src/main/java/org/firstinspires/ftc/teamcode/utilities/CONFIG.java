@@ -12,8 +12,8 @@ public class CONFIG {
     public static String OUTTAKE_L = "outTakeL";
     public static String OUTTAKE_R = "outTakeR";
 
-//    public static String MIDDLETAKE = "middleTake";
-//    public static String INTAKE = "inTake";
+    public static String MIDDLETAKE = "middleTake";
+    public static String INTAKE = "inTake";
 
 
 }

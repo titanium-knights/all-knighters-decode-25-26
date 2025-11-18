@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class Outtake {
 
     public static Telemetry telemetry;
-    public static double outtakePower = 0.9;
+    public static double outtakePower = 0.7;
     public DcMotor outTakeL;
     public DcMotor outTakeR;
 

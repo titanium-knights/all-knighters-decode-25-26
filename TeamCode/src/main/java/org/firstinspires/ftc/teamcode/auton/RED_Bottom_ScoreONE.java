@@ -81,8 +81,11 @@ public class RED_Bottom_ScoreONE extends OpMode {
                 .addPath(new BezierLine(StartBottom_RED, humanPlayer_RED))
                 .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), humanPlayer_RED.getHeading())
 
-                .addPath(new BezierLine(humanPlayer_RED, groupCPickUp1_RED))
-                .setLinearHeadingInterpolation(humanPlayer_RED.getHeading(), groupCPickUp1_RED.getHeading())
+                .addPath(new BezierLine(humanPlayer_RED, StartBottom_RED))
+                .setLinearHeadingInterpolation(humanPlayer_RED.getHeading(), StartBottom_RED.getHeading())
+
+                .addPath(new BezierLine(StartBottom_RED, groupCPickUp1_RED))
+                .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), groupCPickUp1_RED.getHeading())
 
                 .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
                 .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())

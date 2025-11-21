@@ -91,6 +91,11 @@ public class RED_Bottom_ScoreONE extends OpMode {
                 .addPath(new BezierLine(groupCPickUp2_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
 
+                .addPath(new BezierLine(shootAtBasket_RED, groupBPickUp1_RED))
+                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupBPickUp1_RED.getHeading())
+
+                .addPath(new BezierLine(groupBPickUp1_RED, shootAtBasket_RED))
+
                 .build();
 
     }

@@ -82,11 +82,8 @@ public class RED_Bottom_ScoreONE extends OpMode {
                 .addPath(new BezierLine(humanPlayer_RED, groupCPickUp1_RED))
                 .setLinearHeadingInterpolation(humanPlayer_RED.getHeading(), groupCPickUp1_RED.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp1_RED, shootAtBasket_RED))
-                .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), shootAtBasket_RED.getHeading())
-
-                .addPath(new BezierLine(shootAtBasket_RED, groupCPickUp2_RED))
-                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupCPickUp2_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
+                .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())
 
                 .addPath(new BezierLine(groupCPickUp2_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
@@ -94,7 +91,20 @@ public class RED_Bottom_ScoreONE extends OpMode {
                 .addPath(new BezierLine(shootAtBasket_RED, groupBPickUp1_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupBPickUp1_RED.getHeading())
 
-                .addPath(new BezierLine(groupBPickUp1_RED, shootAtBasket_RED))
+                .addPath(new BezierLine(groupBPickUp1_RED, groupBPickUp2_RED))
+                .setLinearHeadingInterpolation(groupBPickUp1_RED.getHeading(), groupBPickUp2_RED.getHeading())
+
+                .addPath(new BezierLine(groupBPickUp2_RED, shootAtBasket_RED))
+                .setLinearHeadingInterpolation(groupBPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
+
+                .addPath(new BezierLine(shootAtBasket_RED, groupAPickUp1_RED))
+                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupAPickUp1_RED.getHeading())
+
+                .addPath(new BezierLine(groupAPickUp1_RED, groupAPickUp2_RED))
+                .setLinearHeadingInterpolation(groupAPickUp1_RED.getHeading(), groupAPickUp2_RED.getHeading())
+
+                .addPath(new BezierLine(groupAPickUp2_RED, shootAtBasket_RED))
+                .setLinearHeadingInterpolation(groupAPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
 
                 .build();
 

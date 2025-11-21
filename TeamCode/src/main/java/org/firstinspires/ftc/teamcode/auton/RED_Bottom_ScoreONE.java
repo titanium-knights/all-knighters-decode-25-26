@@ -150,6 +150,7 @@ public class RED_Bottom_ScoreONE extends OpMode {
     @Override
     public void stop() {
     }
+    // jajajaja
 }
 
 

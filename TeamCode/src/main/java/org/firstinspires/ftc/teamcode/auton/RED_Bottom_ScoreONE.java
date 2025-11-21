@@ -70,6 +70,8 @@ public class RED_Bottom_ScoreONE extends OpMode {
     private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
     private PathChain ScoreFIRST;
+    private PathChain ScoreSECOND;
+    private PathChain ScoreTHIRD;
 
     public void buildPaths(){
 
@@ -87,7 +89,8 @@ public class RED_Bottom_ScoreONE extends OpMode {
 
                 .addPath(new BezierLine(groupCPickUp2_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
-
+                .build();
+        ScoreSECOND = follower.pathBuilder()
                 .addPath(new BezierLine(shootAtBasket_RED, groupBPickUp1_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupBPickUp1_RED.getHeading())
 
@@ -96,7 +99,8 @@ public class RED_Bottom_ScoreONE extends OpMode {
 
                 .addPath(new BezierLine(groupBPickUp2_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupBPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
-
+                .build();
+        ScoreTHIRD = follower.pathBuilder()
                 .addPath(new BezierLine(shootAtBasket_RED, groupAPickUp1_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupAPickUp1_RED.getHeading())
 
@@ -110,11 +114,20 @@ public class RED_Bottom_ScoreONE extends OpMode {
 
     }
 
+
     private int counter = 0;
     public void autonomousPathUpdate() {
         if (counter == 0) {
             follower.followPath(ScoreFIRST);
             counter = 1;
+        }
+        if (counter == 1) {
+            follower.followPath(ScoreSECOND);
+            counter = 2;
+        }
+        if (counter == 2) {
+            follower.followPath(ScoreTHIRD);
+            counter = 3;
         }
     }
 

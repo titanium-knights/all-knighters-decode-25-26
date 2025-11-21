@@ -32,16 +32,21 @@ public class Teleop extends OpMode {
         subsystemManager.drive.move(
                 gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
 
-//        if (gamepad1.left_trigger > 0.5) {
-//            subsystemManager.intake.intakeRun();
-//        } else {
-//            subsystemManager.intake.intakeStop();
-//        }
-
         if (gamepad1.right_trigger > 0.5) {
             subsystemManager.outtake.outtakeRun();
         } else {
             subsystemManager.outtake.outtakeStop();
+        }
+
+        if (gamepad1.left_trigger > 0.5) {
+            subsystemManager.intake.intakeRun();
+        } else {
+            subsystemManager.intake.intakeStop();
+        }
+        if (gamepad1.left_bumper) {
+            subsystemManager.middletake.middletakeRun();
+        } else {
+            subsystemManager.middletake.middletakeStop();
         }
     }
 }

@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.auton;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
@@ -11,9 +9,11 @@ import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
 
-import org.firstinspires.ftc.teamcode.pedroPathing.Constants;
+import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
+
+@Autonomous(name = "BLUE_Bottom_ScoreTHREE")
 public class BLUE_Bottom_ScoreTHREE {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
@@ -21,7 +21,7 @@ public class BLUE_Bottom_ScoreTHREE {
     public Outtake outtake;
 //    public Intake intake;
 
-    private final boolean isRed = true;
+    private final boolean isRed = false;
     private double m(double init, boolean isRed) {
         if (isRed) { return init; }
         else { return 144 - init; }
@@ -41,72 +41,82 @@ public class BLUE_Bottom_ScoreTHREE {
         }
     }
 
-    private final Pose StartPoint = new Pose(m(60,isRed), 12);
-    private final Pose StartPoint_Turn = new Pose(m(60,isRed), 84, Math.toRadians(mr(270,isRed)));
-    private final Pose PickingUpFIRST = new Pose(m(24,isRed), 84, Math.toRadians(mr(270, isRed)));
-    //dropping off first would be going to StartPoint_Turn + StartPoint
-    //then you would StartPoint_Turn again and go to:
 
-    private final Pose PickingUpSECOND = new Pose(m(24,isRed), 60, Math.toRadians(mr(270, isRed)));
-    //dropping off second would be going to StartPoint_Turn + StartPoint
+    private final Pose StartBottom_RED = new Pose(96, 0,Math.toRadians(90));
+    private final Pose StartBottom_BLUE = new Pose(65.25, 0,Math.toRadians(90));
 
-    private final Pose PickingUpTHIRD = new Pose(m(24,isRed), 36, Math.toRadians(mr(270, isRed)));
-    //dropping off second would be going to StartPoint_Turn + StartPoint
+    private final Pose humanPlayer_RED = new Pose(133.75, 0,Math.toRadians(0));
+    private final Pose humanPlayer_BLUE = new Pose(10.25, 0,Math.toRadians(180));
 
-    //TODO: Wrong numbers + no park ( do we need a park?)
-    //TODO: desc: uneficent way to score, initial scored, first and second scored touching basket
+    private final Pose groupCPickUp1_RED = new Pose(96, 27.375,Math.toRadians(0));
+    private final Pose groupCPickUp1_BLUE = new Pose(48,44.625,Math.toRadians(180));
 
-    private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD;
+    private final Pose groupCPickUp2_RED = new Pose(126.75, 27.375 ,Math.toRadians(0));
+    private final Pose groupCPickUp2_BLUE = new Pose(0,44.625,Math.toRadians(180));
+
+    private final Pose groupBPickUp1_RED = new Pose(96,51.375,Math.toRadians(0));
+    private final Pose groupBPickUp1_BLUE = new Pose(48,68.625,Math.toRadians(180));
+
+    private final Pose groupBPickUp2_RED = new Pose(126.75,51.375,Math.toRadians(0));
+    private final Pose groupBPickUp2_BLUE = new Pose(0,68.625,Math.toRadians(180));
+
+    private final Pose groupAPickUp1_RED = new Pose(96,75.375,Math.toRadians(0));
+    private final Pose groupAPickUp1_BLUE = new Pose(48,92.625,Math.toRadians(180));
+
+    private final Pose groupAPickUp2_RED = new Pose(126.75,75.375,Math.toRadians(0));
+    private final Pose groupAPickUp2_BLUE = new Pose(0,92.625,Math.toRadians(180));
+
+    private final Pose shootAtBasket_RED = new Pose(120,120,Math.toRadians(45));
+    private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
+
+    private PathChain ScoreFIRST;
+    private PathChain ScoreSECOND;
+    private PathChain ScoreTHIRD;
 
     public void buildPaths(){
 
+        //do i need to add a path to the begining and end or nah
+
         ScoreFIRST = follower.pathBuilder()
-                .addPath(new BezierLine(StartPoint, StartPoint_Turn))
-                .setLinearHeadingInterpolation(StartPoint.getHeading(), StartPoint_Turn.getHeading())
+                .addPath(new BezierLine(StartBottom_BLUE, humanPlayer_BLUE))
+                .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), humanPlayer_BLUE.getHeading())
 
-                .addPath(new BezierLine(StartPoint_Turn, PickingUpFIRST))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(), PickingUpFIRST.getHeading())
+                .addPath(new BezierLine(humanPlayer_BLUE, StartBottom_BLUE))
+                .setLinearHeadingInterpolation(humanPlayer_BLUE.getHeading(), StartBottom_BLUE.getHeading())
 
-                .addPath(new BezierLine(PickingUpFIRST, StartPoint_Turn))
-                .setLinearHeadingInterpolation(PickingUpFIRST.getHeading(), StartPoint_Turn.getHeading())
+                .addPath(new BezierLine(StartBottom_BLUE, groupCPickUp1_BLUE))
+                .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), groupCPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(StartPoint_Turn, StartPoint))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading())
+                .addPath(new BezierLine(groupCPickUp1_BLUE, groupCPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp1_BLUE.getHeading(), groupCPickUp2_BLUE.getHeading())
 
+                .addPath(new BezierLine(groupCPickUp2_BLUE, shootAtBasket_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp2_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
                 .build();
-
-
         ScoreSECOND = follower.pathBuilder()
-                .addPath(new BezierLine(StartPoint, StartPoint_Turn))
-                .setLinearHeadingInterpolation(StartPoint.getHeading(), StartPoint_Turn.getHeading())
+                .addPath(new BezierLine(shootAtBasket_BLUE, groupBPickUp1_BLUE))
+                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), groupBPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(StartPoint_Turn, PickingUpSECOND))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(), PickingUpSECOND.getHeading())
+                .addPath(new BezierLine(groupBPickUp1_BLUE, groupBPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupBPickUp1_BLUE.getHeading(), groupBPickUp2_BLUE.getHeading())
 
-                .addPath(new BezierLine(PickingUpSECOND, StartPoint_Turn))
-                .setLinearHeadingInterpolation(PickingUpSECOND.getHeading(), StartPoint_Turn.getHeading())
-
-                .addPath(new BezierLine(StartPoint_Turn, StartPoint))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading())
-
+                .addPath(new BezierLine(groupBPickUp2_BLUE, shootAtBasket_BLUE))
+                .setLinearHeadingInterpolation(groupBPickUp2_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
                 .build();
-
         ScoreTHIRD = follower.pathBuilder()
-                .addPath(new BezierLine(StartPoint, StartPoint_Turn))
-                .setLinearHeadingInterpolation(StartPoint.getHeading(), StartPoint_Turn.getHeading())
+                .addPath(new BezierLine(shootAtBasket_BLUE, groupAPickUp1_BLUE))
+                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), groupAPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(StartPoint_Turn, PickingUpTHIRD))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   PickingUpTHIRD.getHeading())
+                .addPath(new BezierLine(groupAPickUp1_BLUE, groupAPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupAPickUp1_BLUE.getHeading(), groupAPickUp2_BLUE.getHeading())
 
-                .addPath(new BezierLine(PickingUpTHIRD, StartPoint_Turn))
-                .setLinearHeadingInterpolation(PickingUpTHIRD.getHeading(),   StartPoint_Turn.getHeading())
-
-                .addPath(new BezierLine(StartPoint_Turn, StartPoint))
-                .setLinearHeadingInterpolation(StartPoint_Turn.getHeading(),   StartPoint.getHeading())
+                .addPath(new BezierLine(groupAPickUp2_BLUE, shootAtBasket_BLUE))
+                .setLinearHeadingInterpolation(groupAPickUp2_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
 
                 .build();
 
     }
+
 
     private int counter = 0;
     public void autonomousPathUpdate() {
@@ -115,16 +125,12 @@ public class BLUE_Bottom_ScoreTHREE {
             counter = 1;
         }
         if (counter == 1) {
-            if ((Math.abs(follower.getPose().getX() - StartPoint.getX()) < 1) && Math.abs(follower.getPose().getY() - StartPoint.getY()) < 1) {
-                follower.followPath(ScoreSECOND, true);
-                counter = 2;
-            }
+            follower.followPath(ScoreSECOND);
+            counter = 2;
         }
         if (counter == 2) {
-            if ((Math.abs(follower.getPose().getX() - StartPoint.getX()) < 1) && Math.abs(follower.getPose().getY() - StartPoint.getY()) < 1) {
-                follower.followPath(ScoreTHIRD, true);
-                counter = 3;
-            }
+            follower.followPath(ScoreTHIRD);
+            counter = 3;
         }
     }
 
@@ -156,7 +162,7 @@ public class BLUE_Bottom_ScoreTHREE {
         opmodeTimer.resetTimer();
 
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(StartPoint);
+        follower.setStartingPose(StartBottom_BLUE);
 
         buildPaths();
         // TODO: give hardware map the same name when we figure it out

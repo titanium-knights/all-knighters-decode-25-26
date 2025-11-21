@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
 @Autonomous(name = "RED_Bottom_ScoreONE")
-public class RED_Bottom_ScoreONE extends OpMode {
+public class RED_Bottom_ScoreTHREE extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;

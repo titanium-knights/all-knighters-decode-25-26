@@ -12,8 +12,8 @@ import com.pedropathing.util.Timer;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
-@Autonomous(name = "BLUE2_Top_ScoreTHREE")
-public class BLUE2_Top_ScoreTHREE extends OpMode {
+@Autonomous(name = "")
+public class BLUE_Top_ScoreTHREEandHUMAN extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -73,7 +73,7 @@ public class BLUE2_Top_ScoreTHREE extends OpMode {
     private final Pose shootAtBasket_RED = new Pose(120,120,Math.toRadians(45));
     private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
-    private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD ;
+    private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD, ScoreHUMAN ;
 
     public void buildPaths(){
 
@@ -137,6 +137,18 @@ public class BLUE2_Top_ScoreTHREE extends OpMode {
         if (counter == 0) {
             follower.followPath(ScoreFIRST);
             counter = 1;
+        }
+        if (counter == 1) {
+            follower.followPath(ScoreSECOND);
+            counter = 2;
+        }
+        if (counter == 2) {
+            follower.followPath(ScoreTHIRD);
+            counter = 3;
+        }
+        if (counter == 3) {
+            follower.followPath(ScoreHUMAN);
+            counter = 4;
         }
     }
 

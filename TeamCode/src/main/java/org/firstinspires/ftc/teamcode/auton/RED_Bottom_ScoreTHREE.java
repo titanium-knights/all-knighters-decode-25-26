@@ -69,9 +69,7 @@ public class RED_Bottom_ScoreTHREE extends OpMode {
     private final Pose shootAtBasket_RED = new Pose(120,120,Math.toRadians(45));
     private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
-    private PathChain ScoreFIRST;
-    private PathChain ScoreSECOND;
-    private PathChain ScoreTHIRD;
+    private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD;
 
     public void buildPaths(){
 

@@ -35,9 +35,18 @@ class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
         telemetry.update()
     }
 
+    @JvmOverloads
+    fun outtakeKYS(override: Double = OUTTAKE_STOPPING_POWER) {
+        outTakeL.power = override
+        outTakeR.power = override
+        telemetry.addLine("outtake is killing itself (on purpose)")
+        telemetry.update()
+    }
+
 
     companion object {
         lateinit var telemetry: Telemetry
         const val OUTTAKE_POWER: Double = 0.7
+        const val OUTTAKE_STOPPING_POWER = -0.1
     }
 }

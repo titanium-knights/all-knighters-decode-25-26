@@ -15,13 +15,13 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class SubsystemManager {
     public SimpleMecanumDrive drive;
 
-    public Outtake outtake;
+    public OuttakeKT outtake;
     public Middletake middletake;
     public Intake intake;
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
-        outtake = new Outtake(hmap, telemetry);
+        outtake = new OuttakeKT(hmap, telemetry);
         middletake = new Middletake(hmap, telemetry);
         intake = new Intake(hmap, telemetry);
     }

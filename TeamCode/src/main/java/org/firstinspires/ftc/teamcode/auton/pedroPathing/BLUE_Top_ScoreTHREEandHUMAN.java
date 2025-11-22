@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.auton;
+package org.firstinspires.ftc.teamcode.auton.pedroPathing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -9,25 +9,24 @@ import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
 import com.pedropathing.util.Timer;
 
-import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
-@Autonomous(name = "BLUE_Bottom_ScoreTHREE")
-public class BLUE_Bottom_ScoreTHREE extends OpMode {
+@Autonomous(name = "BLUE2_Top_ScoreTHREE")
+public class BLUE2_Top_ScoreTHREE extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
     public Outtake outtake;
 //    public Intake intake;
 
-    private final boolean isRed = false;
-    private double m(double init, boolean isRed) {
-        if (isRed) { return init; }
+    private final boolean isBlue = false;
+    private double m(double init, boolean isBlue) {
+        if (isBlue) { return init; }
         else { return 144 - init; }
     }
-    private double mr(double init, boolean isRed) {
-        if (isRed) { return Math.toRadians(init); }
+    private double mr(double init, boolean isBlue) {
+        if (isBlue) { return Math.toRadians(init); }
         else {
             double result =
                     Math.atan2(
@@ -42,11 +41,16 @@ public class BLUE_Bottom_ScoreTHREE extends OpMode {
     }
 
 
+
+    private final Pose StartTOP_Blue = new Pose(0, 0, Math.toRadians(90));
+
+    private final Pose midPoint_Triangle = new Pose(0, 0, Math.toRadians(90));
     private final Pose StartBottom_RED = new Pose(96, 0,Math.toRadians(90));
     private final Pose StartBottom_BLUE = new Pose(65.25, 0,Math.toRadians(90));
 
     private final Pose humanPlayer_RED = new Pose(133.75, 0,Math.toRadians(0));
     private final Pose humanPlayer_BLUE = new Pose(10.25, 0,Math.toRadians(180));
+
 
     private final Pose groupCPickUp1_RED = new Pose(96, 27.375,Math.toRadians(0));
     private final Pose groupCPickUp1_BLUE = new Pose(48,44.625,Math.toRadians(180));
@@ -68,66 +72,71 @@ public class BLUE_Bottom_ScoreTHREE extends OpMode {
 
     private final Pose shootAtBasket_RED = new Pose(120,120,Math.toRadians(45));
     private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
-    private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD;
+
+    private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD ;
 
     public void buildPaths(){
 
-        //do i need to add a path to the begining and end or nah
-
         ScoreFIRST = follower.pathBuilder()
-                .addPath(new BezierLine(StartBottom_BLUE, humanPlayer_BLUE))
-                .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), humanPlayer_BLUE.getHeading())
+                .addPath(new BezierLine(StartTOP_Blue, midPoint_Triangle))
+                .setLinearHeadingInterpolation(StartTOP_Blue.getHeading(), midPoint_Triangle.getHeading())
 
-                .addPath(new BezierLine(humanPlayer_BLUE, StartBottom_BLUE))
-                .setLinearHeadingInterpolation(humanPlayer_BLUE.getHeading(), StartBottom_BLUE.getHeading())
-
-                .addPath(new BezierLine(StartBottom_BLUE, groupCPickUp1_BLUE))
-                .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), groupCPickUp1_BLUE.getHeading())
-
-                .addPath(new BezierLine(groupCPickUp1_BLUE, groupCPickUp2_BLUE))
-                .setLinearHeadingInterpolation(groupCPickUp1_BLUE.getHeading(), groupCPickUp2_BLUE.getHeading())
-
-                .addPath(new BezierLine(groupCPickUp2_BLUE, shootAtBasket_BLUE))
-                .setLinearHeadingInterpolation(groupCPickUp2_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
-                .build();
-        ScoreSECOND = follower.pathBuilder()
-                .addPath(new BezierLine(shootAtBasket_BLUE, groupBPickUp1_BLUE))
-                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), groupBPickUp1_BLUE.getHeading())
-
-                .addPath(new BezierLine(groupBPickUp1_BLUE, groupBPickUp2_BLUE))
-                .setLinearHeadingInterpolation(groupBPickUp1_BLUE.getHeading(), groupBPickUp2_BLUE.getHeading())
-
-                .addPath(new BezierLine(groupBPickUp2_BLUE, shootAtBasket_BLUE))
-                .setLinearHeadingInterpolation(groupBPickUp2_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
-                .build();
-        ScoreTHIRD = follower.pathBuilder()
-                .addPath(new BezierLine(shootAtBasket_BLUE, groupAPickUp1_BLUE))
-                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), groupAPickUp1_BLUE.getHeading())
+                .addPath(new BezierLine(midPoint_Triangle, groupAPickUp1_BLUE))
+                .setLinearHeadingInterpolation(midPoint_Triangle.getHeading(), groupAPickUp1_BLUE.getHeading())
 
                 .addPath(new BezierLine(groupAPickUp1_BLUE, groupAPickUp2_BLUE))
                 .setLinearHeadingInterpolation(groupAPickUp1_BLUE.getHeading(), groupAPickUp2_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupAPickUp2_BLUE, shootAtBasket_BLUE))
-                .setLinearHeadingInterpolation(groupAPickUp2_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
+                .addPath(new BezierLine(groupAPickUp2_BLUE, midPoint_Triangle))
+                .setLinearHeadingInterpolation(groupAPickUp2_BLUE.getHeading(), midPoint_Triangle.getHeading())
 
                 .build();
 
-    }
+        ScoreSECOND = follower.pathBuilder()
+                .addPath(new BezierLine(midPoint_Triangle, groupBPickUp1_BLUE))
+                .setLinearHeadingInterpolation(midPoint_Triangle.getHeading(), groupBPickUp1_BLUE.getHeading())
 
+                .addPath(new BezierLine(groupBPickUp1_BLUE, groupBPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupBPickUp1_BLUE.getHeading(), groupBPickUp2_BLUE.getHeading())
+
+                .addPath(new BezierLine(groupBPickUp2_BLUE, midPoint_Triangle))
+                .setLinearHeadingInterpolation(groupBPickUp2_BLUE.getHeading(), midPoint_Triangle.getHeading())
+
+                .build();
+
+        ScoreTHIRD = follower.pathBuilder()
+                .addPath(new BezierLine(midPoint_Triangle, groupCPickUp1_BLUE))
+                .setLinearHeadingInterpolation(midPoint_Triangle.getHeading(), groupCPickUp1_BLUE.getHeading())
+
+                .addPath(new BezierLine(groupCPickUp1_BLUE, groupCPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp1_BLUE.getHeading(), groupCPickUp2_BLUE.getHeading())
+
+                .addPath(new BezierLine(groupCPickUp2_BLUE, midPoint_Triangle))
+                .setLinearHeadingInterpolation(groupCPickUp2_BLUE.getHeading(), midPoint_Triangle.getHeading())
+
+                .build();
+
+        ScoreHUMAN = follower.pathBuilder()
+                .addPath(new BezierLine(midPoint_Triangle, StartBottom_BLUE))
+                .setLinearHeadingInterpolation(midPoint_Triangle.getHeading(), StartBottom_BLUE.getHeading())
+
+                .addPath(new BezierLine(StartBottom_BLUE, humanPlayer_BLUE))
+                .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), humanPlayer_BLUE.getHeading())
+                .build();
+
+
+
+
+
+
+
+    }
 
     private int counter = 0;
     public void autonomousPathUpdate() {
         if (counter == 0) {
             follower.followPath(ScoreFIRST);
             counter = 1;
-        }
-        if (counter == 1) {
-            follower.followPath(ScoreSECOND);
-            counter = 2;
-        }
-        if (counter == 2) {
-            follower.followPath(ScoreTHIRD);
-            counter = 3;
         }
     }
 
@@ -159,7 +168,7 @@ public class BLUE_Bottom_ScoreTHREE extends OpMode {
         opmodeTimer.resetTimer();
 
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(StartBottom_RED);
+        follower.setStartingPose(StartTOP_Blue);
 
         buildPaths();
         // TODO: give hardware map the same name when we figure it out
@@ -181,7 +190,6 @@ public class BLUE_Bottom_ScoreTHREE extends OpMode {
     @Override
     public void stop() {
     }
-    // jajajaja
 }
 
 

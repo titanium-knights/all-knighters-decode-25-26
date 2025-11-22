@@ -20,6 +20,7 @@ class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
         Companion.telemetry = telemetry
     }
 
+    @JvmOverloads
     fun outtakeRun(override: Double = OUTTAKE_POWER) {
         outTakeL.power = override
         outTakeR.power = override

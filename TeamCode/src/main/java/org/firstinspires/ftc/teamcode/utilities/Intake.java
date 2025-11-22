@@ -16,6 +16,7 @@ public class Intake {
 
     public Intake(HardwareMap hmap, Telemetry telemetry) {
         this.inTake = hmap.dcMotor.get(CONFIG.INTAKE);
+        this.inTake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         this.inTake.setDirection(DcMotor.Direction.REVERSE);
         this.telemetry = telemetry;
     }

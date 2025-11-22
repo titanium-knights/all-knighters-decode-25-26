@@ -17,6 +17,7 @@ public class Middletake {
 
     public Middletake(HardwareMap hmap, Telemetry telemetry) {
         this.middleTake = hmap.dcMotor.get(CONFIG.MIDDLETAKE);
+        this.middleTake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         this.middleTake.setDirection(DcMotor.Direction.FORWARD);
         this.telemetry = telemetry;
     }

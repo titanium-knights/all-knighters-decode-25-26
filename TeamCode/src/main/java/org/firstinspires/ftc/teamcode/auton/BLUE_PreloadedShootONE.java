@@ -73,8 +73,6 @@ public class BLUE_PreloadedShootONE extends OpMode {
     private PathChain ScoreFIRST;
     public void buildPaths(){
 
-        //do i need to add a path to the begining and end or nah
-
         ScoreFIRST = follower.pathBuilder()
                 .addPath(new BezierLine(StartBottom_BLUE, shootAtBasket_BLUE))
                 .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())

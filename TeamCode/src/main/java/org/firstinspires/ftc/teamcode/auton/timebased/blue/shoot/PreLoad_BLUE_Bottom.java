@@ -11,7 +11,7 @@ public class PreLoad_BLUE_Bottom extends AutonMethods {
         super.runOpMode();
         waitForStart();
         someSortOfShootFunction();
-        moveForward(5); //to parking
+        moveBackward(0.2); //to parking
 
 
 

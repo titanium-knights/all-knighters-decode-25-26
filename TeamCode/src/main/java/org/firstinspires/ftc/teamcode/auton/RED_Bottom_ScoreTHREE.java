@@ -71,6 +71,8 @@ public class RED_Bottom_ScoreTHREE extends OpMode {
 
     private PathChain ScoreFIRST, ScoreSECOND, ScoreTHIRD;
 
+    private PathChain ScoreFOURTH;
+
     public void buildPaths(){
 
         //do i need to add a path to the begining and end or nah
@@ -82,16 +84,22 @@ public class RED_Bottom_ScoreTHREE extends OpMode {
                 .addPath(new BezierLine(humanPlayer_RED, StartBottom_RED))
                 .setLinearHeadingInterpolation(humanPlayer_RED.getHeading(), StartBottom_RED.getHeading())
 
-                .addPath(new BezierLine(StartBottom_RED, groupCPickUp1_RED))
-                .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), groupCPickUp1_RED.getHeading())
+                .addPath(new BezierLine(StartBottom_RED, shootAtBasket_RED))
+                .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), shootAtBasket_RED.getHeading())
 
+                .addPath(new BezierLine(shootAtBasket_RED, groupCPickUp1_RED))
+                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupCPickUp1_RED.getHeading())
+                .build();
+
+        ScoreSECOND = follower.pathBuilder()
                 .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
                 .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())
 
                 .addPath(new BezierLine(groupCPickUp2_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
-        ScoreSECOND = follower.pathBuilder()
+
+        ScoreTHIRD = follower.pathBuilder()
                 .addPath(new BezierLine(shootAtBasket_RED, groupBPickUp1_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupBPickUp1_RED.getHeading())
 
@@ -101,7 +109,7 @@ public class RED_Bottom_ScoreTHREE extends OpMode {
                 .addPath(new BezierLine(groupBPickUp2_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupBPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
-        ScoreTHIRD = follower.pathBuilder()
+        ScoreFOURTH = follower.pathBuilder()
                 .addPath(new BezierLine(shootAtBasket_RED, groupAPickUp1_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupAPickUp1_RED.getHeading())
 
@@ -129,6 +137,10 @@ public class RED_Bottom_ScoreTHREE extends OpMode {
         if (counter == 2) {
             follower.followPath(ScoreTHIRD);
             counter = 3;
+        }
+        if (counter == 3) {
+            follower.followPath(ScoreFOURTH);
+            counter = 4;
         }
     }
 

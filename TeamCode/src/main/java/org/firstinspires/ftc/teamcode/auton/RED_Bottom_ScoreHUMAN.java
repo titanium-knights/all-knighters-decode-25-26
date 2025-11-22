@@ -13,8 +13,9 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
-@Autonomous(name = "RED_PreloadedShootONE")
-public class RED_PreloadedShootONE extends OpMode {
+@Autonomous(name = "RED_Bottom_ScoreHUMAN")
+
+public class RED_Bottom_ScoreHUMAN extends OpMode{
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -60,7 +61,7 @@ public class RED_PreloadedShootONE extends OpMode {
     private final Pose groupBPickUp2_RED = new Pose(126.75,51.375,Math.toRadians(0));
     private final Pose groupBPickUp2_BLUE = new Pose(0,68.625,Math.toRadians(180));
 
-    private final Pose groupAPickUp1_RED = new Pose(96, 75.375,Math.toRadians(0));
+    private final Pose groupAPickUp1_RED = new Pose(96,75.375,Math.toRadians(0));
     private final Pose groupAPickUp1_BLUE = new Pose(48,92.625,Math.toRadians(180));
 
     private final Pose groupAPickUp2_RED = new Pose(126.75,75.375,Math.toRadians(0));
@@ -70,9 +71,18 @@ public class RED_PreloadedShootONE extends OpMode {
     private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
     private PathChain ScoreFIRST;
+
     public void buildPaths(){
 
+        //do i need to add a path to the begining and end or nah
+
         ScoreFIRST = follower.pathBuilder()
+                .addPath(new BezierLine(StartBottom_RED, humanPlayer_RED))
+                .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), humanPlayer_RED.getHeading())
+
+                .addPath(new BezierLine(humanPlayer_RED, StartBottom_RED))
+                .setLinearHeadingInterpolation(humanPlayer_RED.getHeading(), StartBottom_RED.getHeading())
+
                 .addPath(new BezierLine(StartBottom_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
@@ -138,5 +148,4 @@ public class RED_PreloadedShootONE extends OpMode {
     @Override
     public void stop() {
     }
-    // jajajaja
 }

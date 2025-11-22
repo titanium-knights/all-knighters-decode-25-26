@@ -13,8 +13,7 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
-@Autonomous(name = "RED_PreloadedShootONE")
-public class RED_PreloadedShootONE extends OpMode {
+public class RED_Bottom_ScoreONE extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -60,7 +59,7 @@ public class RED_PreloadedShootONE extends OpMode {
     private final Pose groupBPickUp2_RED = new Pose(126.75,51.375,Math.toRadians(0));
     private final Pose groupBPickUp2_BLUE = new Pose(0,68.625,Math.toRadians(180));
 
-    private final Pose groupAPickUp1_RED = new Pose(96, 75.375,Math.toRadians(0));
+    private final Pose groupAPickUp1_RED = new Pose(96,75.375,Math.toRadians(0));
     private final Pose groupAPickUp1_BLUE = new Pose(48,92.625,Math.toRadians(180));
 
     private final Pose groupAPickUp2_RED = new Pose(126.75,75.375,Math.toRadians(0));
@@ -70,13 +69,33 @@ public class RED_PreloadedShootONE extends OpMode {
     private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
     private PathChain ScoreFIRST;
+    private PathChain ScoreSECOND;
+
     public void buildPaths(){
 
+        //do i need to add a path to the begining and end or nah
+
         ScoreFIRST = follower.pathBuilder()
+                .addPath(new BezierLine(StartBottom_RED, humanPlayer_RED))
+                .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), humanPlayer_RED.getHeading())
+
+                .addPath(new BezierLine(humanPlayer_RED, StartBottom_RED))
+                .setLinearHeadingInterpolation(humanPlayer_RED.getHeading(), StartBottom_RED.getHeading())
+
                 .addPath(new BezierLine(StartBottom_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
 
+        ScoreSECOND = follower.pathBuilder()
+                .addPath(new BezierLine(shootAtBasket_RED, groupCPickUp1_RED))
+                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupCPickUp1_RED.getHeading())
+
+                .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
+                .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())
+
+                .addPath(new BezierLine(groupCPickUp2_RED, shootAtBasket_RED))
+                .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), shootAtBasket_RED.getHeading())
+                .build();
     }
 
 
@@ -85,6 +104,10 @@ public class RED_PreloadedShootONE extends OpMode {
         if (counter == 0) {
             follower.followPath(ScoreFIRST);
             counter = 1;
+        }
+        if (counter == 1) {
+            follower.followPath(ScoreSECOND);
+            counter = 2;
         }
     }
 
@@ -138,5 +161,5 @@ public class RED_PreloadedShootONE extends OpMode {
     @Override
     public void stop() {
     }
-    // jajajaja
+
 }

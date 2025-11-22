@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.auton;
+package org.firstinspires.ftc.teamcode.auton.pedroPathing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -161,7 +161,7 @@ public class RED_Top_ScoreTHREE extends OpMode {
         opmodeTimer.resetTimer();
 
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(StartBottom_RED);
+        follower.setStartingPose(StartTOP_Red);
 
         buildPaths();
         // TODO: give hardware map the same name when we figure it out

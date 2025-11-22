@@ -75,4 +75,23 @@ public abstract class AutonMethods extends LinearOpMode {
     public void outtakeStop() {
         subsystemManager.outtake.outtakeRun();
     }
+
+
+    // Shoot
+    public void someSortOfShootFunction() {
+        subsystemManager.middletake.middletakeRun();
+        sleep(500);
+        subsystemManager.middletake.middletakeStop();
+        sleep(250);
+        subsystemManager.middletake.middletakeRun();
+        sleep(250);
+        subsystemManager.middletake.middletakeStop();
+        sleep(250);
+        subsystemManager.outtake.outtakeRun();
+        sleep(3000);
+        subsystemManager.middletake.middletakeRun();
+        sleep(750);
+        subsystemManager.middletake.middletakeStop();
+        subsystemManager.outtake.outtakeStop();
+    }
 }

@@ -1,10 +1,8 @@
 package org.firstinspires.ftc.teamcode.utilities;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -39,7 +37,7 @@ public class SimpleMecanumDrive {
 
     public static DcMotor fl, fr, bl, br;
 
-    public static HashMap<DcMotor, double[]> directions = new HashMap<>();
+    public static final HashMap<DcMotor, double[]> directions = new HashMap<>();
 
     public void move(double x, double y, double turn) {
         y = -y;

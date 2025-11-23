@@ -11,14 +11,14 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class Intake {
 
     public static Telemetry telemetry;
-    public static double intakePower = 0.9;
-    public DcMotor inTake;
+    public static final double intakePower = 0.9;
+    public final DcMotor inTake;
 
     public Intake(HardwareMap hmap, Telemetry telemetry) {
         this.inTake = hmap.dcMotor.get(CONFIG.INTAKE);
         this.inTake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         this.inTake.setDirection(DcMotor.Direction.REVERSE);
-        this.telemetry = telemetry;
+        Intake.telemetry = telemetry;
     }
 
     public void intakeRun(){

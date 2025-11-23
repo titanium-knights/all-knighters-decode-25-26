@@ -11,15 +11,15 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class Middletake {
 
     public static Telemetry telemetry;
-    public static double middletakePower = 0.5;
-    public DcMotor middleTake;
+    public static final double middletakePower = 0.5;
+    public final DcMotor middleTake;
 
 
     public Middletake(HardwareMap hmap, Telemetry telemetry) {
         this.middleTake = hmap.dcMotor.get(CONFIG.MIDDLETAKE);
         this.middleTake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         this.middleTake.setDirection(DcMotor.Direction.FORWARD);
-        this.telemetry = telemetry;
+        Middletake.telemetry = telemetry;
     }
 
     public void middletakeRun(){

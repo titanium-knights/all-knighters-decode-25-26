@@ -13,6 +13,7 @@ import com.pedropathing.util.Timer;
 import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
+//This code is for Blue alliance from the bottom
 @Autonomous(name = "BLUE_sT3")
 public class BLUE_sT3 extends OpMode {
     private Follower follower;

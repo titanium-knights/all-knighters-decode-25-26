@@ -82,7 +82,7 @@ public class RED_sT2 extends OpMode {
     private final Pose moveTowardsBasket_RED = new Pose(25, 25,Math.toRadians(135));
 
     private final Pose initialTURN_RED = new Pose (50, 50,Math.toRadians(120));
-    private PathChain ScorePRELOAD, ScoreFIRST, ScoreSECOND, ScoreTHIRD;
+    private PathChain ScorePRELOAD, ScoreFIRST, ScoreSECOND;
 
     public void buildPaths(){
 

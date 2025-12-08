@@ -14,8 +14,8 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
 //This code is for Blue alliance from the bottom
-@Autonomous(name = "BLUE_sT1")
-public class BLUE_sT1 extends OpMode {
+@Autonomous(name = "BLUE_sTpreload")
+public class BLUE_sTpreload extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -78,7 +78,7 @@ public class BLUE_sT1 extends OpMode {
     private final Pose initialTURN_BLUE = new Pose(130, 80, Math.toRadians(90));
 
     private final Pose moveTowardsBasket_BLUE = new Pose(72, 130, Math.toRadians(90));
-    private PathChain ScorePRELOAD, ScoreFIRST;
+    private PathChain ScorePRELOAD;
 
     public void buildPaths(){
 
@@ -96,22 +96,7 @@ public class BLUE_sT1 extends OpMode {
 
                 .build();
 
-        ScoreFIRST = follower.pathBuilder()
-                .addPath(new BezierLine(shootAtBasket_BLUE, groupAPickUp1_BLUE))
-                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), groupAPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupAPickUp1_BLUE, groupAPickUp2_BLUE))
-                .setLinearHeadingInterpolation(groupAPickUp1_BLUE.getHeading(), groupAPickUp2_BLUE.getHeading())
-
-                .addPath(new BezierLine(groupAPickUp2_BLUE, groupAPickUp1_BLUE))
-                .setLinearHeadingInterpolation(groupAPickUp2_BLUE.getHeading(), groupAPickUp1_BLUE.getHeading())
-
-                .addPath(new BezierLine(groupAPickUp2_BLUE, shootAtBasket_BLUE))
-                .setLinearHeadingInterpolation(groupAPickUp1_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
-
-                //Some sort of shoot functions
-
-                .build();
 
 
 
@@ -124,10 +109,6 @@ public class BLUE_sT1 extends OpMode {
         if (counter == 0) {
             follower.followPath(ScorePRELOAD);
             counter = 1;
-        }
-        if (counter == 1) {
-            follower.followPath(ScoreFIRST);
-            counter = 2;
         }
 
 

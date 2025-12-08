@@ -14,8 +14,8 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.Outtake;
 
 //This code is for Red alliance from the bottom
-@Autonomous(name = "RED_sT1")
-public class RED_sT1 extends OpMode {
+@Autonomous(name = "RED_sTpreload")
+public class RED_sTpreload extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -82,7 +82,7 @@ public class RED_sT1 extends OpMode {
     private final Pose moveTowardsBasket_RED = new Pose(25, 25,Math.toRadians(135));
 
     private final Pose initialTURN_RED = new Pose (50, 50,Math.toRadians(120));
-    private PathChain ScorePRELOAD, ScoreFIRST;
+    private PathChain ScorePRELOAD;
 
     public void buildPaths(){
 
@@ -100,22 +100,6 @@ public class RED_sT1 extends OpMode {
 
                 .build();
 
-        ScoreFIRST = follower.pathBuilder()
-                .addPath(new BezierLine(shootAtBasket_RED, groupAPickUp1_RED))
-                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), groupAPickUp1_RED.getHeading())
-
-                .addPath(new BezierLine(groupAPickUp1_RED, groupAPickUp2_RED))
-                .setLinearHeadingInterpolation(groupAPickUp1_RED.getHeading(), groupAPickUp2_RED.getHeading())
-
-                .addPath(new BezierLine(groupAPickUp2_RED, groupAPickUp1_RED))
-                .setLinearHeadingInterpolation(groupAPickUp2_RED.getHeading(), groupAPickUp1_RED.getHeading())
-
-                .addPath(new BezierLine(groupAPickUp2_RED, shootAtBasket_RED))
-                .setLinearHeadingInterpolation(groupAPickUp1_RED.getHeading(), shootAtBasket_RED.getHeading())
-
-                //Some sort of shoot functions
-
-                .build();
 
 
 
@@ -127,10 +111,7 @@ public class RED_sT1 extends OpMode {
             follower.followPath(ScorePRELOAD);
             counter = 1;
         }
-        if (counter == 1) {
-            follower.followPath(ScoreFIRST);
-            counter = 2;
-        }
+
 
 
 

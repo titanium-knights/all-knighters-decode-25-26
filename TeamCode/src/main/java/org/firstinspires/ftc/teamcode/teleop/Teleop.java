@@ -28,11 +28,7 @@ public class Teleop extends OpMode {
 
     @Override
     public void loop() {
-        if (gamepad1.b) {
-            modifier = -0.8;
-        } else {
-            modifier = 1.0;
-        }
+        modifier = (gamepad1.b) ? -0.8 : 1.0;
 
         subsystemManager.drive.move(
                 gamepad1.left_stick_x * modifier, gamepad1.left_stick_y  * modifier, gamepad1.right_stick_x);
@@ -52,9 +48,9 @@ public class Teleop extends OpMode {
             subsystemManager.intake.intakeStop();
         }
         if (gamepad1.left_bumper) {
-            subsystemManager.middletake.middletakeRun();
+            subsystemManager.agitator.agitate();
         } else {
-            subsystemManager.middletake.middletakeStop();
+            subsystemManager.agitator.agitate();
         }
     }
 }

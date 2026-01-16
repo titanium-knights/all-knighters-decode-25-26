@@ -16,13 +16,13 @@ public class SubsystemManager {
     public final SimpleMecanumDrive drive;
 
     public final OuttakeKT outtake;
-    public final Middletake middletake;
     public final Intake intake;
+    public final Agitator agitator;
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
         outtake = new OuttakeKT(hmap, telemetry);
-        middletake = new Middletake(hmap, telemetry);
         intake = new Intake(hmap, telemetry);
+        agitator = new Agitator(hmap, telemetry);
     }
 }

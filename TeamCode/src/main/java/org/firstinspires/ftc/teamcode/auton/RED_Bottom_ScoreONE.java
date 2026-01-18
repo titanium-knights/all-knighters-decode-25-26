@@ -11,13 +11,13 @@ import com.pedropathing.util.Timer;
 
 import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 //import org.firstinspires.ftc.teamcode.utilities.Intake;
-import org.firstinspires.ftc.teamcode.utilities.Outtake;
+import org.firstinspires.ftc.teamcode.utilities.OuttakeKT;
 
 public class RED_Bottom_ScoreONE extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
-    public Outtake outtake;
+    public OuttakeKT outtake;
 //    public Intake intake;
 
     private final boolean isRed = false;
@@ -143,7 +143,7 @@ public class RED_Bottom_ScoreONE extends OpMode {
 
         buildPaths();
         // TODO: give hardware map the same name when we figure it out
-        outtake = new Outtake(hardwareMap, telemetry);
+        outtake = new OuttakeKT(hardwareMap, telemetry);
 //        intake = new Intake(hardwareMap, telemetry);
 
         //TODO: add the position you would want everything to start at here like claw.closed()

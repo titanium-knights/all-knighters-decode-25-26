@@ -8,39 +8,32 @@ import org.firstinspires.ftc.robotcore.external.Telemetry
 
 @Configurable
 class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
-    var outTakeL: DcMotor
-    var outTakeR: DcMotor
+    var outTake: DcMotor
 
 
     init {
-        this.outTakeL = hmap.dcMotor.get(CONFIG.OUTTAKE_L)
-        this.outTakeR = hmap.dcMotor.get(CONFIG.OUTTAKE_R)
-        this.outTakeL.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
-        this.outTakeR.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
-        this.outTakeL.direction = DcMotorSimple.Direction.FORWARD
-        this.outTakeR.direction = DcMotorSimple.Direction.REVERSE
+        this.outTake = hmap.dcMotor.get(CONFIG.OUTTAKE)
+        this.outTake.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
+        this.outTake.direction = DcMotorSimple.Direction.REVERSE
         Companion.telemetry = telemetry
     }
 
     @JvmOverloads
     fun outtakeRun(override: Double = OUTTAKE_POWER) {
-        outTakeL.power = override
-        outTakeR.power = override
+        outTake.power = override
         telemetry.addLine(" outtake is running")
         telemetry.update()
     }
 
     fun outtakeStop() {
-        outTakeL.power = 0.0
-        outTakeR.power = 0.0
+        outTake.power = 0.0
         telemetry.addLine(" outtake is stopped")
         telemetry.update()
     }
 
     @JvmOverloads
     fun outtakeKYS(override: Double = OUTTAKE_STOPPING_POWER) {
-        outTakeL.power = override
-        outTakeR.power = override
+        outTake.power = override
         telemetry.addLine("outtake is killing itself (on purpose)")
         telemetry.update()
     }

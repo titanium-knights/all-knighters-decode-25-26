@@ -30,6 +30,45 @@ private final Pose shootAtBasket_RED = new Pose(120,120,Math.toRadians(45));
 private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
 270 look down
-90 look u
+90 look up
 360/0 look right
 180 look left
+
+
+
+
+private final Pose StartBottom_RED = new Pose(72, 0,Math.toRadians(90));
+
+private final Pose ShootBottom_RED = new Pose(72, 6.5,Math.toRadians(117.64));
+
+private final Pose groupCPickUp1_RED = new Pose(48, 42,Math.toRadians(180));
+
+private final Pose groupCPickUp2_RED = new Pose(44,42 ,Math.toRadians(180));
+
+private final Pose groupCPickUp3_RED = new Pose(34,42 ,Math.toRadians(180));
+
+private final Pose groupBPickUp1_RED = new Pose(44,66,Math.toRadians(180));
+
+private final Pose groupBPickUp2_RED = new Pose(39,66,Math.toRadians(180));
+
+private final Pose groupBPickUp3_RED = new Pose(34,66,Math.toRadians(180));
+
+private final Pose groupAPickUp1_RED = new Pose(44,90,Math.toRadians(180));
+
+private final Pose groupAPickUp2_RED = new Pose(39,90,Math.toRadians(180));
+
+private final Pose groupAPickUp3_RED = new Pose(34,90,Math.toRadians(180));
+
+private final Pose shootAtBasket_RED = new Pose(70,74,Math.toRadians(135));
+
+
+fr ex0
+br ex1
+fl ex2
+bl ex3
+intake c3
+outtake c2
+
+hood ex0
+theNothingBurger ex1
+agitator c0

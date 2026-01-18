@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.utilities.Outtake;
 import org.firstinspires.ftc.teamcode.utilities.OuttakeKT;
 
 @Autonomous(name = "redBottom")
-public class redBottom extends AutonMethods {
+public class redBottom extends OpMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -124,28 +124,27 @@ public class redBottom extends AutonMethods {
     public void autonomousPathUpdate() {
 
         if (counter == 0) {
-            telemetry.addLine("case " + counter + "HOME");
-            telemetry.update();
             follower.followPath(ScoreHOME);
-
             counter = 1;
         }
         if (counter == 1) {
-            telemetry.addLine("case " + counter +"FIRST");
-            telemetry.update();
             if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
-
+                //shoot
                 follower.followPath(ScoreFIRST);
                 counter = 2;
             }
         }
         if (counter == 2) {
-            follower.followPath(ScoreSECOND);
-            counter = 3;
+            if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                //shoot
+                follower.followPath(ScoreSECOND);
+                counter = 3;
         }
         if (counter == 3) {
-            follower.followPath(ScoreTHIRD);
-            counter = 4;
+            if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                //shoot
+                follower.followPath(ScoreTHIRD);
+                counter = 4;
         }
     }
 

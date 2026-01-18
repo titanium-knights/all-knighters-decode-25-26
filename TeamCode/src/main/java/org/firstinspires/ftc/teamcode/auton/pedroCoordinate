@@ -36,22 +36,27 @@ private final Pose shootAtBasket_BLUE = new Pose(24,24,Math.toRadians(135));
 
 
 
-
 private final Pose StartBottom_RED = new Pose(72, 0,Math.toRadians(90));
 
 private final Pose ShootBottom_RED = new Pose(72, 6.5,Math.toRadians(117.64));
 
-private final Pose groupCPickUp1_RED = new Pose(48, 42,Math.toRadians(180));
+private final Pose PositionC_RED = new Pose(48, 42,Math.toRadians(180));
 
-private final Pose groupCPickUp2_RED = new Pose(44,42 ,Math.toRadians(180));
+private final Pose groupCPickUp1_RED = new Pose(44, 42,Math.toRadians(180));
+
+private final Pose groupCPickUp2_RED = new Pose(39,42 ,Math.toRadians(180));
 
 private final Pose groupCPickUp3_RED = new Pose(34,42 ,Math.toRadians(180));
+
+private final Pose PositionB_RED = new Pose(48, 66,Math.toRadians(180));
 
 private final Pose groupBPickUp1_RED = new Pose(44,66,Math.toRadians(180));
 
 private final Pose groupBPickUp2_RED = new Pose(39,66,Math.toRadians(180));
 
 private final Pose groupBPickUp3_RED = new Pose(34,66,Math.toRadians(180));
+
+private final Pose PositionA_RED = new Pose(48, 90,Math.toRadians(180));
 
 private final Pose groupAPickUp1_RED = new Pose(44,90,Math.toRadians(180));
 
@@ -72,3 +77,37 @@ outtake c2
 hood ex0
 theNothingBurger ex1
 agitator c0
+
+
+
+
+
+private final Pose StartBottom_BLUE = new Pose(89, 0,Math.toRadians(90));
+
+private final Pose ShootBottom_BLUE = new Pose(89, 6.5,Math.toRadians(62.36));
+
+private final Pose PositionC_BLUE = new Pose(96, 30,Math.toRadians(270));
+
+private final Pose groupCPickUp1_BLUE = new Pose(100, 30,Math.toRadians(270));
+
+private final Pose groupCPickUp2_BLUE = new Pose(105,30 ,Math.toRadians(270));
+
+private final Pose groupCPickUp3_BLUE = new Pose(110,30 ,Math.toRadians(270));
+
+private final Pose PositionB_BLUE = new Pose(96, 54,Math.toRadians(270));
+
+private final Pose groupBPickUp1_BLUE = new Pose(100,54,Math.toRadians(270));
+
+private final Pose groupBPickUp2_BLUE = new Pose(105,54,Math.toRadians(270));
+
+private final Pose groupBPickUp3_BLUE = new Pose(110,54,Math.toRadians(270));
+
+private final Pose PositionA_BLUE = new Pose(96,78,Math.toRadians(270));
+
+private final Pose groupAPickUp1_BLUE = new Pose(100,78,Math.toRadians(270));
+
+private final Pose groupAPickUp2_BLUE = new Pose(105,78,Math.toRadians(270));
+
+private final Pose groupAPickUp3_BLUE = new Pose(110,78,Math.toRadians(270));
+
+private final Pose shootAtBasket_BLUE = new Pose(74,74,Math.toRadians(45));

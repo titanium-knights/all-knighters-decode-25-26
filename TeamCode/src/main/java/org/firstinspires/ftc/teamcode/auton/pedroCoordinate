@@ -67,16 +67,16 @@ private final Pose groupAPickUp3_RED = new Pose(34,90,Math.toRadians(180));
 private final Pose shootAtBasket_RED = new Pose(70,74,Math.toRadians(135));
 
 
-fr ex0
-br ex1
-fl ex2
-bl ex3
-intake c3
-outtake c2
+fr ex0 dc
+br ex1 dc
+fl ex2 dc
+bl ex3 dc
+intake c3 dc
+outtake c2 dc
 
-hood ex0
-theNothingBurger ex1
-agitator c0
+hood ex0 s
+theNothingBurger ex1 s
+agitator c2 dc
 
 
 

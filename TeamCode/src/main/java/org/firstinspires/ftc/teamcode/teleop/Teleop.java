@@ -47,7 +47,7 @@ public class Teleop extends OpMode {
         } else {
             subsystemManager.intake.intakeStop();
         }
-        if (gamepad1.left_bumper) {
+        if (gamepad1.right_bumper) {
             subsystemManager.agitator.agitate();
         } else {
             subsystemManager.agitator.agitate();

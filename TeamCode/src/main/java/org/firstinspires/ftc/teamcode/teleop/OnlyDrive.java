@@ -32,7 +32,7 @@ public class OnlyDrive extends OpMode {
             }
             subsystemManager.drive.move(
                     gamepad1.left_stick_x,
-                    gamepad1.left_stick_y,
+                    -gamepad1.left_stick_y, // negated since y value is opposite on the stick
                     gamepad1.right_stick_x
             );
         }

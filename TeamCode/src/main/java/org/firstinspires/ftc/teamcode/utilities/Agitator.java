@@ -15,16 +15,16 @@ public class Agitator {
 
     public Agitator(HardwareMap hmap, Telemetry telemetry) {
         this.agitator = hmap.dcMotor.get(CONFIG.AGITATOR);
-        this.agitator.setDirection(CRServo.Direction.REVERSE);
+        this.agitator.setDirection(DcMotor.Direction.FORWARD);
         Agitator.telemetry = telemetry;
     }
 
     public void agitate() {
-        agitator.setPower(0.9);
+        agitator.setPower(0.25);
     }
 
     public void unAgitate() {
-        agitator.setPower(-0.9);
+        agitator.setPower(-0.25);
     }
 
     public void stopAgitatingMyBallsItsReallyAnnoying() {

@@ -8,14 +8,6 @@ import org.firstinspires.ftc.teamcode.utilities.SubsystemManager;
 
 @TeleOp(name = "Teleop")
 public class Teleop extends OpMode {
-    public static String color = "p";
-    // time stuff
-    private final ElapsedTime sortingTimer = new ElapsedTime();
-    private final ElapsedTime holesTimer = new ElapsedTime();
-    public boolean holesActive = false;
-    public boolean sortingActive = false;
-    public int holeInt = 0;
-    double[] stepTimes = {2.0, 3.5, 5.0};
     private SubsystemManager subsystemManager;
     private Double modifier;
 
@@ -31,7 +23,9 @@ public class Teleop extends OpMode {
         modifier = (gamepad1.b) ? -0.8 : 1.0;
 
         subsystemManager.drive.move(
-                gamepad1.left_stick_x * modifier, gamepad1.left_stick_y  * modifier, gamepad1.right_stick_x);
+                gamepad1.left_stick_x * modifier,
+                -gamepad1.left_stick_y * modifier, // negated bc y value is opposite on the stick
+                gamepad1.right_stick_x);
         if (gamepad1.right_trigger > 0.5) {
             subsystemManager.outtake.outtakeRun();
         } else {
@@ -47,10 +41,10 @@ public class Teleop extends OpMode {
         } else {
             subsystemManager.intake.intakeStop();
         }
-        if (gamepad1.left_bumper) {
+        if (gamepad1.right_bumper) {
             subsystemManager.agitator.agitate();
         } else {
-            subsystemManager.agitator.agitate();
+            subsystemManager.agitator.stopAgitatingMyBallsItsReallyAnnoying();
         }
     }
 }

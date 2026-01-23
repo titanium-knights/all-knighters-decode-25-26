@@ -88,21 +88,21 @@ public class blueBottom extends IncMode {
 
         ScoreTHIRD =
                 follower.pathBuilder()
-                        .addPath(new BezierLine(shootAtBasket_BLUE, PositionC_BLUE))
+                        .addPath(new BezierLine(shootAtBasket_BLUE, PositionA_BLUE))
                         .setLinearHeadingInterpolation(
-                                shootAtBasket_BLUE.getHeading(), PositionC_BLUE.getHeading())
-                        .addPath(new BezierLine(PositionC_BLUE, groupCPickUp1_BLUE))
+                                shootAtBasket_BLUE.getHeading(), PositionA_BLUE.getHeading())
+                        .addPath(new BezierLine(PositionA_BLUE, groupAPickUp1_BLUE))
                         .setLinearHeadingInterpolation(
-                                PositionC_BLUE.getHeading(), groupCPickUp1_BLUE.getHeading())
-                        .addPath(new BezierLine(groupCPickUp1_BLUE, groupCPickUp2_BLUE))
+                                PositionA_BLUE.getHeading(), groupAPickUp1_BLUE.getHeading())
+                        .addPath(new BezierLine(groupAPickUp1_BLUE, groupAPickUp2_BLUE))
                         .setLinearHeadingInterpolation(
-                                groupCPickUp1_BLUE.getHeading(), groupCPickUp2_BLUE.getHeading())
-                        .addPath(new BezierLine(groupCPickUp2_BLUE, groupCPickUp3_BLUE))
+                                groupAPickUp1_BLUE.getHeading(), groupAPickUp2_BLUE.getHeading())
+                        .addPath(new BezierLine(groupAPickUp2_BLUE, groupAPickUp3_BLUE))
                         .setLinearHeadingInterpolation(
-                                groupCPickUp2_BLUE.getHeading(), groupCPickUp3_BLUE.getHeading())
-                        .addPath(new BezierLine(groupCPickUp3_BLUE, shootAtBasket_BLUE))
+                                groupAPickUp2_BLUE.getHeading(), groupAPickUp3_BLUE.getHeading())
+                        .addPath(new BezierLine(groupAPickUp3_BLUE, shootAtBasket_BLUE))
                         .setLinearHeadingInterpolation(
-                                groupCPickUp3_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
+                                groupAPickUp3_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
                         .build();
     }
 

@@ -13,6 +13,8 @@ open class IncMode : OpMode() {
 
     override fun loop() {}
 
+
+    /** blocking methods */
     /**
      * this is blocking and uses `@JvmOverloads` to make constructors with defaults
      */
@@ -31,5 +33,28 @@ open class IncMode : OpMode() {
             */
         }
         subsystemManager!!.intake.intakeStop()
+    }
+
+
+    /** non-blocking methods below */
+    fun intakeStart() {
+        subsystemManager!!.intake.intakeRun();
+    }
+
+
+    fun intakeStop() {
+        subsystemManager!!.intake.intakeStop();
+    }
+
+    fun outtakeStart() {
+        subsystemManager!!.outtake.outtakeRun();
+    }
+
+    fun outtakeStop() {
+        subsystemManager!!.outtake.outtakeStop();
+    }
+
+    fun rotatorToNext() {
+        // nothing lmao
     }
 }

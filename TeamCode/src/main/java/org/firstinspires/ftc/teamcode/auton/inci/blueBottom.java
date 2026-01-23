@@ -60,61 +60,61 @@ public class blueBottom extends InciMethods {
 
 
         ScoreHOME = follower.pathBuilder()
-                .addPath(new BezierLine(StartBottom_RED, ShootBottom_RED))
-                .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), ShootBottom_RED.getHeading())
+                .addPath(new BezierLine(StartBottom_BLUE, ShootBottom_BLUE))
+                .setLinearHeadingInterpolation(StartBottom_BLUE.getHeading(), ShootBottom_BLUE.getHeading())
                 .build();
 
         ScoreFIRST = follower.pathBuilder()
 
-                .addPath(new BezierLine(ShootBottom_RED, PositionC_RED))
-                .setLinearHeadingInterpolation(ShootBottom_RED.getHeading(), PositionC_RED.getHeading())
+                .addPath(new BezierLine(ShootBottom_BLUE, PositionC_BLUE))
+                .setLinearHeadingInterpolation(ShootBottom_BLUE.getHeading(), PositionC_BLUE.getHeading())
 
-                .addPath(new BezierLine(PositionC_RED, groupCPickUp1_RED))
-                .setLinearHeadingInterpolation(PositionC_RED.getHeading(), groupCPickUp1_RED.getHeading())
+                .addPath(new BezierLine(PositionC_BLUE, groupCPickUp1_BLUE))
+                .setLinearHeadingInterpolation(PositionC_BLUE.getHeading(), groupCPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
-                .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp1_BLUE, groupCPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp1_BLUE.getHeading(), groupCPickUp2_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp2_RED, groupCPickUp3_RED))
-                .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), groupCPickUp3_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp2_BLUE, groupCPickUp3_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp2_BLUE.getHeading(), groupCPickUp3_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp3_RED,shootAtBasket_RED))
-                .setLinearHeadingInterpolation(groupCPickUp3_RED.getHeading(), shootAtBasket_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp3_BLUE,shootAtBasket_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp3_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
                 .build();
 
         ScoreSECOND = follower.pathBuilder()
 
-                .addPath(new BezierLine(shootAtBasket_RED, PositionB_RED))
-                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), PositionB_RED.getHeading())
+                .addPath(new BezierLine(shootAtBasket_BLUE, PositionB_BLUE))
+                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), PositionB_BLUE.getHeading())
 
-                .addPath(new BezierLine(PositionB_RED, groupBPickUp1_RED))
-                .setLinearHeadingInterpolation(PositionB_RED.getHeading(), groupBPickUp1_RED.getHeading())
+                .addPath(new BezierLine(PositionB_BLUE, groupBPickUp1_BLUE))
+                .setLinearHeadingInterpolation(PositionB_BLUE.getHeading(), groupBPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupBPickUp1_RED, groupBPickUp2_RED))
-                .setLinearHeadingInterpolation(groupBPickUp1_RED.getHeading(), groupBPickUp2_RED.getHeading())
+                .addPath(new BezierLine(groupBPickUp1_BLUE, groupBPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupBPickUp1_BLUE.getHeading(), groupBPickUp2_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupBPickUp2_RED, groupBPickUp3_RED))
-                .setLinearHeadingInterpolation(groupBPickUp2_RED.getHeading(), groupBPickUp3_RED.getHeading())
+                .addPath(new BezierLine(groupBPickUp2_BLUE, groupBPickUp3_BLUE))
+                .setLinearHeadingInterpolation(groupBPickUp2_BLUE.getHeading(), groupBPickUp3_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupBPickUp3_RED, shootAtBasket_RED))
-                .setLinearHeadingInterpolation(groupBPickUp3_RED.getHeading(), shootAtBasket_RED.getHeading())
+                .addPath(new BezierLine(groupBPickUp3_BLUE, shootAtBasket_BLUE))
+                .setLinearHeadingInterpolation(groupBPickUp3_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
                 .build();
 
         ScoreTHIRD = follower.pathBuilder()
-                .addPath(new BezierLine(shootAtBasket_RED, PositionC_RED))
-                .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), PositionC_RED.getHeading())
+                .addPath(new BezierLine(shootAtBasket_BLUE, PositionC_BLUE))
+                .setLinearHeadingInterpolation(shootAtBasket_BLUE.getHeading(), PositionC_BLUE.getHeading())
 
-                .addPath(new BezierLine(PositionC_RED, groupCPickUp1_RED))
-                .setLinearHeadingInterpolation(PositionC_RED.getHeading(), groupCPickUp1_RED.getHeading())
+                .addPath(new BezierLine(PositionC_BLUE, groupCPickUp1_BLUE))
+                .setLinearHeadingInterpolation(PositionC_BLUE.getHeading(), groupCPickUp1_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
-                .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp1_BLUE, groupCPickUp2_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp1_BLUE.getHeading(), groupCPickUp2_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp2_RED, groupCPickUp3_RED))
-                .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), groupCPickUp3_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp2_BLUE, groupCPickUp3_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp2_BLUE.getHeading(), groupCPickUp3_BLUE.getHeading())
 
-                .addPath(new BezierLine(groupCPickUp3_RED, shootAtBasket_RED))
-                .setLinearHeadingInterpolation(groupCPickUp3_RED.getHeading(), shootAtBasket_RED.getHeading())
+                .addPath(new BezierLine(groupCPickUp3_BLUE, shootAtBasket_BLUE))
+                .setLinearHeadingInterpolation(groupCPickUp3_BLUE.getHeading(), shootAtBasket_BLUE.getHeading())
                 .build();
 
     }
@@ -128,20 +128,20 @@ public class blueBottom extends InciMethods {
             counter = 1;
         }
         if (counter == 1) {
-            if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+            if((Math.abs(follower.getPose().getX() - shootAtBasket_BLUE.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_BLUE.getY()) < 1) {
                 //shoot
                 follower.followPath(ScoreFIRST);
                 counter = 2;
             }
         }
         if (counter == 2) {
-            if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+            if((Math.abs(follower.getPose().getX() - shootAtBasket_BLUE.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_BLUE.getY()) < 1) {
                 //shoot
                 follower.followPath(ScoreSECOND);
                 counter = 3;
             }
             if (counter == 3) {
-                if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                if((Math.abs(follower.getPose().getX() - shootAtBasket_BLUE.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_BLUE.getY()) < 1) {
                     //shoot
                     follower.followPath(ScoreTHIRD);
                     counter = 4;
@@ -176,7 +176,7 @@ public class blueBottom extends InciMethods {
                 opmodeTimer.resetTimer();
 
                 follower = Constants.createFollower(hardwareMap);
-                follower.setStartingPose(StartBottom_RED);
+                follower.setStartingPose(StartBottom_BLUE);
 
                 buildPaths();
                 // TODO: give hardware map the same name when we figure it out

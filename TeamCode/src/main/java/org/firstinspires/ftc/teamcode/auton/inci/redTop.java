@@ -12,8 +12,8 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.OuttakeKT;
 
 
-@Autonomous(name = "redBottom")
-public class redTop extends OpMode {
+@Autonomous(name = "redTop")
+public class redTop extends IncMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -137,94 +137,124 @@ public class redTop extends OpMode {
         }
         if (counter == 1) {
             if((Math.abs(follower.getPose().getX() - PositionA_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - PositionA_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreFIRST_A1);
+                intakeStop();
                 counter = 2;
             }
         }
         if (counter == 2) {
             if ((Math.abs(follower.getPose().getX() - groupAPickUp1_RED.getX()) < 1)
                     && Math.abs(follower.getPose().getY() - groupAPickUp1_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreFIRST_A2);
+                intakeStop();
                 counter = 3;
             }
         }
         if (counter == 3) {
             if((Math.abs(follower.getPose().getX() - groupAPickUp2_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupAPickUp2_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreSECOND_A1);
+                intakeStop();
                 counter = 4;
             }
         }
         if (counter == 4) {
             if((Math.abs(follower.getPose().getX() - groupAPickUp3_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupAPickUp3_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreSECOND_A2);
+                intakeStop();
                 counter = 5;
             }
         }
         if (counter == 5) {
             if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+               outtakeStart();
                 follower.followPath(ScoreTHIRD_A1);
+                outtakeStop();
                 counter = 6;
             }
         }
         // b
         if (counter == 6) {
             if((Math.abs(follower.getPose().getX() - PositionB_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - PositionB_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreFIRST_B1);
+                intakeStop();
                 counter = 7;
             }
         }
         if (counter == 7) {
             if((Math.abs(follower.getPose().getX() - groupBPickUp1_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupBPickUp1_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreFIRST_B2);
+                intakeStop();
                 counter = 8;
             }
         }
         if (counter == 8) {
             if((Math.abs(follower.getPose().getX() - groupBPickUp2_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupBPickUp2_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreSECOND_B1);
+                intakeStop();
                 counter = 9;
             }
         }
         if (counter == 9) {
             if((Math.abs(follower.getPose().getX() - groupBPickUp3_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupBPickUp3_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreSECOND_B2);
+                intakeStop();
                 counter = 10;
             }
         }
         if (counter == 10) {
             if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                outtakeStart();
                 follower.followPath(ScoreTHIRD_B1);
+                outtakeStop();
                 counter = 11;
             }
         }
         // c
         if (counter == 11) {
             if((Math.abs(follower.getPose().getX() - PositionC_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - PositionC_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreTHIRD_C1);
+                intakeStop();
                 counter = 12;
             }
         }
         if (counter == 12) {
             if((Math.abs(follower.getPose().getX() - groupCPickUp1_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupCPickUp1_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreFIRST_C2);
+                intakeStop();
                 counter = 13;
             }
         }
         if (counter == 13) {
             if((Math.abs(follower.getPose().getX() - groupCPickUp2_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupCPickUp2_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreSECOND_C1);
+                intakeStop();
                 counter = 14;
             }
         }
         if (counter == 14) {
             if((Math.abs(follower.getPose().getX() - groupCPickUp3_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupCPickUp3_RED.getY()) < 1) {
+                intakeStart();
                 follower.followPath(ScoreSECOND_C2);
+                intakeStop();
                 counter = 15;
             }
         }
         if (counter == 15) {
             if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+               outtakeStart();
                 follower.followPath(ScoreTHIRD_C1);
+                outtakeStop();
                 counter = 16;
             }
         }

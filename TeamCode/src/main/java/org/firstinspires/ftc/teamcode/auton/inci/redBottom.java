@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 import org.firstinspires.ftc.teamcode.utilities.OuttakeKT;
 
 @Autonomous(name = "redBottom")
-public class redBottom extends OpMode {
+public class redBottom extends IncMode {
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private int pathState;
@@ -33,7 +33,8 @@ public class redBottom extends OpMode {
     private final Pose groupAPickUp2_RED = new Pose(39,90,Math.toRadians(180));
     private final Pose groupAPickUp3_RED = new Pose(34,90,Math.toRadians(180));
     private final Pose shootAtBasket_RED = new Pose(70,74,Math.toRadians(135));
-    private PathChain ScoreHOME, ScoreFIRST, ScoreSECOND, ScoreTHIRD;
+    private PathChain ScoreHOME, ScoreGroupC, ScoreGroupC1, ScoreGroupC2, ScoreGroupC3, ScoreGroupCShoot, ScoreGroupB, ScoreGroupB1,
+            ScoreGroupB2, ScoreGroupB3, ScoreGroupBShoot, ScoreGroupA, ScoreGroupA1, ScoreGroupA2, ScoreGroupA3, ScoreGroupAShoot;
 
     public void buildPaths(){
 
@@ -43,55 +44,77 @@ public class redBottom extends OpMode {
                 .setLinearHeadingInterpolation(StartBottom_RED.getHeading(), ShootBottom_RED.getHeading())
                 .build();
 
-        ScoreFIRST = follower.pathBuilder()
-
+        ScoreGroupC = follower.pathBuilder()
                 .addPath(new BezierLine(ShootBottom_RED, PositionC_RED))
                 .setLinearHeadingInterpolation(ShootBottom_RED.getHeading(), PositionC_RED.getHeading())
+                .build();
 
+        ScoreGroupC1 = follower.pathBuilder()
                 .addPath(new BezierLine(PositionC_RED, groupCPickUp1_RED))
                 .setLinearHeadingInterpolation(PositionC_RED.getHeading(), groupCPickUp1_RED.getHeading())
+                .build();
 
+        ScoreGroupC2 = follower.pathBuilder()
                 .addPath(new BezierLine(groupCPickUp1_RED, groupCPickUp2_RED))
                 .setLinearHeadingInterpolation(groupCPickUp1_RED.getHeading(), groupCPickUp2_RED.getHeading())
+                .build();
 
+        ScoreGroupC3 = follower.pathBuilder()
                 .addPath(new BezierLine(groupCPickUp2_RED, groupCPickUp3_RED))
                 .setLinearHeadingInterpolation(groupCPickUp2_RED.getHeading(), groupCPickUp3_RED.getHeading())
+                .build();
 
+        ScoreGroupCShoot = follower.pathBuilder()
                 .addPath(new BezierLine(groupCPickUp3_RED,shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupCPickUp3_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
 
-        ScoreSECOND = follower.pathBuilder()
-
+        ScoreGroupB = follower.pathBuilder()
                 .addPath(new BezierLine(shootAtBasket_RED, PositionB_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), PositionB_RED.getHeading())
+                .build();
 
+        ScoreGroupB1 = follower.pathBuilder()
                 .addPath(new BezierLine(PositionB_RED, groupBPickUp1_RED))
                 .setLinearHeadingInterpolation(PositionB_RED.getHeading(), groupBPickUp1_RED.getHeading())
+                .build();
 
+        ScoreGroupB2 = follower.pathBuilder()
                 .addPath(new BezierLine(groupBPickUp1_RED, groupBPickUp2_RED))
                 .setLinearHeadingInterpolation(groupBPickUp1_RED.getHeading(), groupBPickUp2_RED.getHeading())
+                .build();
 
+        ScoreGroupB3 = follower.pathBuilder()
                 .addPath(new BezierLine(groupBPickUp2_RED, groupBPickUp3_RED))
                 .setLinearHeadingInterpolation(groupBPickUp2_RED.getHeading(), groupBPickUp3_RED.getHeading())
+                .build();
 
+        ScoreGroupBShoot = follower.pathBuilder()
                 .addPath(new BezierLine(groupBPickUp3_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupBPickUp3_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
 
-        ScoreTHIRD = follower.pathBuilder()
+        ScoreGroupA = follower.pathBuilder()
                 .addPath(new BezierLine(shootAtBasket_RED, PositionA_RED))
                 .setLinearHeadingInterpolation(shootAtBasket_RED.getHeading(), PositionA_RED.getHeading())
+                .build();
 
+        ScoreGroupA1 = follower.pathBuilder()
                 .addPath(new BezierLine(PositionA_RED, groupAPickUp1_RED))
                 .setLinearHeadingInterpolation(PositionA_RED.getHeading(), groupAPickUp1_RED.getHeading())
+                .build();
 
+        ScoreGroupA2 = follower.pathBuilder()
                 .addPath(new BezierLine(groupAPickUp1_RED, groupAPickUp2_RED))
                 .setLinearHeadingInterpolation(groupAPickUp1_RED.getHeading(), groupAPickUp2_RED.getHeading())
+                .build();
 
+        ScoreGroupA3 = follower.pathBuilder()
                 .addPath(new BezierLine(groupAPickUp2_RED, groupAPickUp3_RED))
                 .setLinearHeadingInterpolation(groupAPickUp2_RED.getHeading(), groupAPickUp3_RED.getHeading())
+                .build();
 
+        ScoreGroupAShoot = follower.pathBuilder()
                 .addPath(new BezierLine(groupAPickUp3_RED, shootAtBasket_RED))
                 .setLinearHeadingInterpolation(groupAPickUp3_RED.getHeading(), shootAtBasket_RED.getHeading())
                 .build();
@@ -107,25 +130,122 @@ public class redBottom extends OpMode {
             counter = 1;
         }
         if (counter == 1) {
-            if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
-                //shoot
-                follower.followPath(ScoreFIRST);
+            if ((Math.abs(follower.getPose().getX() - PositionC_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - PositionC_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupC1);
+                intakeStop();
                 counter = 2;
             }
         }
         if (counter == 2) {
-            if ((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1)
-                    && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
-                // shoot
-                follower.followPath(ScoreSECOND);
+            if((Math.abs(follower.getPose().getX() - groupCPickUp1_RED.getX()) < 1 ) && Math.abs(follower.getPose().getY() - groupCPickUp1_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupC2);
+                intakeStop();
                 counter = 3;
             }
         }
         if (counter == 3) {
-            if((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
-                //shoot
-                follower.followPath(ScoreTHIRD);
+            if ((Math.abs(follower.getPose().getX() - groupCPickUp2_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupCPickUp2_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupC2);
+                intakeStop();
                 counter = 4;
+            }
+        }
+        if (counter == 4) {
+            if ((Math.abs(follower.getPose().getX() - groupCPickUp3_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupCPickUp3_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupC3);
+                intakeStop();
+                counter = 5;
+            }
+        }if (counter == 5) {
+            if ((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                outtakeStart();
+                follower.followPath(ScoreGroupCShoot);
+                outtakeStop();
+                counter = 6;
+            }
+        }
+        if (counter == 6) {
+            if ((Math.abs(follower.getPose().getX() - PositionB_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - PositionB_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupB);
+                intakeStop();
+                counter = 7;
+            }
+        }
+        if (counter == 7) {
+            if ((Math.abs(follower.getPose().getX() - groupBPickUp1_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupBPickUp1_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupB1);
+                intakeStop();
+                counter = 8;
+            }
+        }
+        if (counter == 8) {
+            if ((Math.abs(follower.getPose().getX() - groupBPickUp2_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupBPickUp2_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupB2);
+                intakeStop();
+                counter = 9;
+            }
+        }
+        if (counter == 9) {
+            if ((Math.abs(follower.getPose().getX() - groupBPickUp3_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupBPickUp3_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupB3);
+                intakeStop();
+                counter = 10;
+            }
+        }
+        if (counter == 10) {
+            if ((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                outtakeStart();
+                follower.followPath(ScoreGroupBShoot);
+                outtakeStop();
+                counter = 11;
+            }
+        }
+        if (counter == 11) {
+            if ((Math.abs(follower.getPose().getX() - PositionA_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - PositionA_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupA);
+                intakeStop();
+                counter = 12;
+            }
+        }
+        if (counter == 12) {
+            if ((Math.abs(follower.getPose().getX() - groupAPickUp1_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupAPickUp1_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupA1);
+                intakeStop();
+                counter = 13;
+            }
+        }
+        if (counter == 13) {
+            if ((Math.abs(follower.getPose().getX() - groupAPickUp2_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupAPickUp2_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupA2);
+                intakeStop();
+                counter = 14;
+            }
+        }
+        if (counter == 14) {
+            if ((Math.abs(follower.getPose().getX() - groupAPickUp3_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - groupAPickUp3_RED.getY()) < 1) {
+                intakeStart();
+                follower.followPath(ScoreGroupA3);
+                intakeStop();
+                counter = 15;
+            }
+        }
+        if (counter == 15) {
+            if ((Math.abs(follower.getPose().getX() - shootAtBasket_RED.getX()) < 1) && Math.abs(follower.getPose().getY() - shootAtBasket_RED.getY()) < 1) {
+                outtakeStart();
+                follower.followPath(ScoreGroupAShoot);
+                outtakeStop();
+                counter = 7;
             }
         }
     }

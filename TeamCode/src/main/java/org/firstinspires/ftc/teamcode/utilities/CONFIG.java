@@ -8,6 +8,19 @@ public class CONFIG {
     // ex: ch motor 3 (control hub > motor > port 3)
 
     // drivetrain wheels
+
+    /*
+    fr ex0 dc
+    br ex1 dc
+    fl ex2 dc
+    bl ex3 dc
+    o c0 dc
+    i c3 dc
+
+    backOdo c0 dcx
+    leftOdo c3 dcx
+    rightOdo ex3 dcx
+     */
     public static final String FRONT_LEFT = "fl";
     public static final DcMotorSimple.Direction FL_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
@@ -24,15 +37,12 @@ public class CONFIG {
 
     public static final String INTAKE = "intake";
 
-    public static final String AGITATOR = "agitator";
-
-    public static final String HOOD = "hood";
-    public static final String THE_NOTHING_BURGER = "theNothingBurger";
-
     public static final String LEFT_ODO = INTAKE;
     public  static  final double LEFT_ODO_DIRECTION = Encoder.REVERSE;
+
     public static final String RIGHT_ODO = BACK_LEFT;
     public static final double RIGHT_ODO_DIRECTION = Encoder.REVERSE;
-    public static final String BACK_ODO = AGITATOR;
+
+    public static final String BACK_ODO = OUTTAKE;
     public static final double BACK_ODO_DIRECTION = Encoder.REVERSE;
 }

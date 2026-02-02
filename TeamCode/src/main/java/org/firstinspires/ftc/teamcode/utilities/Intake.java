@@ -31,5 +31,10 @@ public class Intake {
         telemetry.addLine(" intake is stopped");
     }
 
+    public void intakeReversed() {
+        inTake.setPower(-0.7);
+        telemetry.addLine(" intake is reversing");
+    }
+
 
 }

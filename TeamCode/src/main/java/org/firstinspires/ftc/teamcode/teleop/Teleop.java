@@ -39,12 +39,11 @@ public class Teleop extends OpMode {
         if (gamepad1.left_trigger > 0.5) {
             subsystemManager.intake.intakeRun();
         } else {
-            subsystemManager.intake.intakeStop();
-        }
-        if (gamepad1.right_bumper) {
-            subsystemManager.agitator.agitate();
-        } else {
-            subsystemManager.agitator.stopAgitatingMyBallsItsReallyAnnoying();
+            if (gamepad1.left_bumper) {
+                subsystemManager.intake.intakeReversed();
+            } else {
+                subsystemManager.intake.intakeStop();
+            }
         }
     }
 }

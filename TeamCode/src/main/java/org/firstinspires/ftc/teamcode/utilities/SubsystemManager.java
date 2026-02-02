@@ -17,12 +17,10 @@ public class SubsystemManager {
 
     public final OuttakeKT outtake;
     public final Intake intake;
-    public final Agitator agitator;
     public SubsystemManager(HardwareMap hmap, Telemetry telemetry) {
         // add util class initializations here
         drive = new SimpleMecanumDrive(hmap);
         outtake = new OuttakeKT(hmap, telemetry);
         intake = new Intake(hmap, telemetry);
-        agitator = new Agitator(hmap, telemetry);
     }
 }

@@ -42,6 +42,6 @@ class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
     companion object {
         lateinit var telemetry: Telemetry
         const val OUTTAKE_POWER: Double = 0.7
-        const val OUTTAKE_STOPPING_POWER = -0.1
+        const val OUTTAKE_STOPPING_POWER = -0.7
     }
 }

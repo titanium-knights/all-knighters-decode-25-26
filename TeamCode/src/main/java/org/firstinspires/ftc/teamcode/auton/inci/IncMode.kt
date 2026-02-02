@@ -19,8 +19,8 @@ open class IncMode : OpMode() {
      * this is blocking and uses `@JvmOverloads` to make constructors with defaults
      */
     @JvmOverloads
-    fun intakeForTime(seconds: Double = 2.5) {
-        subsystemManager!!.intake.intakeRun()
+    fun outtakeForTime(seconds: Double = 2.5) {
+        subsystemManager!!.outtake.outtakeRun()
         val timer = ElapsedTime()
         timer.reset()
         while (timer.seconds() < seconds) {
@@ -32,7 +32,7 @@ open class IncMode : OpMode() {
                Rather than offer you the illusion of free choice, I will take the liberty of choosing for you... if and when your time comes round again. I do apologize for what must seem to you an arbitrary imposition, Dr. Freeman. I trust it will all make sense to you in the course of... well... I'm really not at liberty to say. In the meantime... this is where I get off.
             */
         }
-        subsystemManager!!.intake.intakeStop()
+        subsystemManager!!.outtake.outtakeStop()
     }
 
 

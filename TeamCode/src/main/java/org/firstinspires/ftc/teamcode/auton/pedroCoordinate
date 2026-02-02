@@ -76,9 +76,11 @@ outtake c2 dc
 
 hood ex0 s
 theNothingBurger ex1 s
-agitator c2 dc
+agitator c1 dc
 
-
+rightOdo ex3 dcx
+backOdo c1 dcx
+leftOdo c3 dcx
 
 
 

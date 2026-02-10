@@ -8,8 +8,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry
 
 @Configurable
 class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
-    var outTake1: DcMotor
-    var outTake2: DcMotor
+    var outTake: DcMotor
 
 
     init {

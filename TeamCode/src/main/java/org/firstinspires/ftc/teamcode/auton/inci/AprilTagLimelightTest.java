@@ -10,6 +10,8 @@ import com.qualcomm.robotcore.hardware.IMU;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 
+import java.util.List;
+
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="AprilTag Limelight Test", group="Tests")
 public class AprilTagLimelightTest extends OpMode {
 
@@ -52,12 +54,12 @@ public class AprilTagLimelightTest extends OpMode {
         LLResult result = limelight.getLatestResult();
 
         if (result != null && result.isValid()) {
-            LLResultTypes.FiducialResult[] tags = result.getFiducialResults();
-            telemetry.addData("Tag Count", tags.length);
+            List<LLResultTypes.FiducialResult> tags = result.getFiducialResults();
+            telemetry.addData("Tag Count", tags.size());
 
-            if (tags.length > 0) {
+            if (!tags.isEmpty()) {
                 // Grab the first tag
-                lastSeenTag = tags[0];
+                lastSeenTag = tags.get(0);
 
                 // ⚡ Print the entire object to telemetry so we can see which field has the ID
                 telemetry.addLine("Tag object dump:");

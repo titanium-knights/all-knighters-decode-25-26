@@ -33,7 +33,8 @@ public class CONFIG {
     public static final String BACK_RIGHT = "br";
     public static final DcMotorSimple.Direction BR_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
-    public static final String OUTTAKE = "outtake";
+    public static final String OUTTAKE1 = "outtake1";
+    public static final String OUTTAKE2 = "outtake2";
 
     public static final String INTAKE = "intake";
 
@@ -43,6 +44,6 @@ public class CONFIG {
     public static final String RIGHT_ODO = BACK_LEFT;
     public static final double RIGHT_ODO_DIRECTION = Encoder.REVERSE;
 
-    public static final String BACK_ODO = OUTTAKE;
+    public static final String BACK_ODO = OUTTAKE1;
     public static final double BACK_ODO_DIRECTION = Encoder.REVERSE;
 }

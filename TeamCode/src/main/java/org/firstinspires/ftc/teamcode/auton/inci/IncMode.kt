@@ -36,15 +36,15 @@ open class IncMode : OpMode() {
     }
 
 
-//    /** non-blocking methods below */
-//    fun intakeStart() {
-//        subsystemManager!!.intake.intakeRun();
-//    }
-//
-//
-//    fun intakeStop() {
-//        subsystemManager!!.intake.intakeStop();
-//    }
+    /** non-blocking methods below */
+    fun intakeStart() {
+        subsystemManager!!.intake.intakeRun();
+    }
+
+
+    fun intakeStop() {
+        subsystemManager!!.intake.intakeStop();
+    }
 
     fun outtakeStart() {
         subsystemManager!!.outtake.outtakeRun();
@@ -52,9 +52,5 @@ open class IncMode : OpMode() {
 
     fun outtakeStop() {
         subsystemManager!!.outtake.outtakeStop();
-    }
-
-    fun rotatorToNext() {
-        // nothing lmao
     }
 }

@@ -21,29 +21,35 @@ public class CONFIG {
     leftOdo c3 dcx
     rightOdo ex3 dcx
      */
-    public static final String FRONT_LEFT = "fl";
+    public static final String FRONT_LEFT = "fl"; // c1
     public static final DcMotorSimple.Direction FL_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
-    public static final String FRONT_RIGHT = "fr";
+    public static final String FRONT_RIGHT = "fr"; // c2
     public static final DcMotorSimple.Direction FR_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
-    public static final String BACK_LEFT = "bl";
+    public static final String BACK_LEFT = "bl"; // c0
     public static final DcMotorSimple.Direction BL_DIRECTION = DcMotorSimple.Direction.REVERSE;
 
-    public static final String BACK_RIGHT = "br";
+    public static final String BACK_RIGHT = "br"; // c3
     public static final DcMotorSimple.Direction BR_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
-    public static final String OUTTAKE1 = "outtake1";
-    public static final String OUTTAKE2 = "outtake2";
+    public static final String OUTTAKE_LEFT = "out_l"; // e3
+    public static final DcMotorSimple.Direction OUT_L_DIRECTION = DcMotorSimple.Direction.REVERSE;
 
-    public static final String INTAKE = "intake";
+    public static final String OUTTAKE_RIGHT = "out_r"; // e1
+    public static final DcMotorSimple.Direction OUT_R_DIRECTION = DcMotorSimple.Direction.FORWARD;
+
+    public static final String INTAKE = "in"; // e0
+    public static final DcMotorSimple.Direction IN_DIRECTION = DcMotorSimple.Direction.FORWARD;
+
+
 
     public static final String LEFT_ODO = INTAKE;
-    public  static  final double LEFT_ODO_DIRECTION = Encoder.REVERSE;
+    public  static  final double LEFT_ODO_DIRECTION = Encoder.FORWARD;
 
     public static final String RIGHT_ODO = BACK_LEFT;
     public static final double RIGHT_ODO_DIRECTION = Encoder.REVERSE;
 
-    public static final String BACK_ODO = OUTTAKE1;
+    public static final String BACK_ODO = OUTTAKE_LEFT;
     public static final double BACK_ODO_DIRECTION = Encoder.REVERSE;
 }

@@ -8,39 +8,39 @@ import org.firstinspires.ftc.robotcore.external.Telemetry
 
 @Configurable
 class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
-    var outTake1: DcMotor
-    var outTake2: DcMotor
+    var outtakeLeft: DcMotor
+    var outtakeRight: DcMotor
 
 
     init {
-        this.outTake1 = hmap.dcMotor.get(CONFIG.OUTTAKE1)
-        this.outTake2 = hmap.dcMotor.get(CONFIG.OUTTAKE2)
-        this.outTake1.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
-        this.outTake2.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
-        this.outTake1.direction = DcMotorSimple.Direction.REVERSE
-        this.outTake2.direction = DcMotorSimple.Direction.FORWARD
+        this.outtakeLeft = hmap.dcMotor.get(CONFIG.OUTTAKE_LEFT)
+        this.outtakeRight = hmap.dcMotor.get(CONFIG.OUTTAKE_RIGHT)
+        this.outtakeLeft.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
+        this.outtakeRight.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
+        this.outtakeLeft.direction = DcMotorSimple.Direction.REVERSE
+        this.outtakeRight.direction = DcMotorSimple.Direction.FORWARD
         Companion.telemetry = telemetry
     }
 
     @JvmOverloads
     fun outtakeRun(override: Double = OUTTAKE_POWER) {
-        outTake1.power = override
-        outTake2.power = override
+        outtakeLeft.power = override
+        outtakeRight.power = override
         telemetry.addLine(" outtake is running")
         telemetry.update()
     }
 
     fun outtakeStop() {
-        outTake1.power = 0.0
-        outTake2.power = 0.0
+        outtakeLeft.power = 0.0
+        outtakeRight.power = 0.0
         telemetry.addLine(" outtake is stopped")
         telemetry.update()
     }
 
     @JvmOverloads
     fun outtakeKYS(override: Double = OUTTAKE_STOPPING_POWER) {
-        outTake1.power = override
-        outTake2.power = override
+        outtakeLeft.power = override
+        outtakeRight.power = override
         telemetry.addLine("outtake is killing itself (on purpose)")
         telemetry.update()
     }
@@ -48,7 +48,7 @@ class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
 
     companion object {
         lateinit var telemetry: Telemetry
-        const val OUTTAKE_POWER: Double = 0.7
-        const val OUTTAKE_STOPPING_POWER = -0.7
+        const val OUTTAKE_POWER: Double = 0.5
+        const val OUTTAKE_STOPPING_POWER = -0.5
     }
 }

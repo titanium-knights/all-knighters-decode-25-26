@@ -22,10 +22,26 @@ public class Teleop extends OpMode {
     public void loop() {
         modifier = (gamepad1.b) ? -0.8 : 1.0;
 
-        subsystemManager.drive.move(
-                gamepad1.left_stick_x * modifier,
-                -gamepad1.left_stick_y * modifier, // negated bc y value is opposite on the stick
-                gamepad1.right_stick_x);
+        if (!gamepad1.a) {
+            subsystemManager.drive.move(
+                    gamepad1.left_stick_x * modifier,
+                    -gamepad1.left_stick_y * modifier, // negated bc y value is opposite on the stick
+                    gamepad1.right_stick_x);
+        } else {
+            int xDpadDir = 0;
+            if (gamepad1.dpad_left) { xDpadDir--; }
+            if (gamepad1.dpad_right) { xDpadDir++; }
+            xDpadDir *= modifier;
+
+            int yDpadDir = 0;
+            if (gamepad1.dpad_up) { yDpadDir++; }
+            if (gamepad1.dpad_down) { yDpadDir--; }
+            yDpadDir *= modifier;
+
+            subsystemManager.drive.move(
+                    xDpadDir, yDpadDir, gamepad1.right_stick_x * 0.8
+            );
+        }
         if (gamepad1.right_trigger > 0.5) {
             subsystemManager.outtake.outtakeRun();
         } else {

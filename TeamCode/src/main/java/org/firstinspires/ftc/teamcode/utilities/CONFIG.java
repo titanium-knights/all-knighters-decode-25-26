@@ -34,22 +34,22 @@ public class CONFIG {
     public static final DcMotorSimple.Direction BR_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
     public static final String OUTTAKE_LEFT = "out_l"; // e3
-    public static final DcMotorSimple.Direction OUT_L_DIRECTION = DcMotorSimple.Direction.REVERSE;
+    public static final DcMotorSimple.Direction OUT_L_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
     public static final String OUTTAKE_RIGHT = "out_r"; // e1
-    public static final DcMotorSimple.Direction OUT_R_DIRECTION = DcMotorSimple.Direction.FORWARD;
+    public static final DcMotorSimple.Direction OUT_R_DIRECTION = DcMotorSimple.Direction.REVERSE;
 
     public static final String INTAKE = "in"; // e0
     public static final DcMotorSimple.Direction IN_DIRECTION = DcMotorSimple.Direction.FORWARD;
 
 
 
-    public static final String LEFT_ODO = INTAKE;
-    public  static  final double LEFT_ODO_DIRECTION = Encoder.FORWARD;
+    public static final String LEFT_ODO = BACK_LEFT; // c0
+    public  static  final double LEFT_ODO_DIRECTION = Encoder.REVERSE;
 
-    public static final String RIGHT_ODO = BACK_LEFT;
+    public static final String RIGHT_ODO = OUTTAKE_LEFT; //e3
     public static final double RIGHT_ODO_DIRECTION = Encoder.REVERSE;
 
-    public static final String BACK_ODO = OUTTAKE_LEFT;
+    public static final String BACK_ODO = BACK_RIGHT; // c3
     public static final double BACK_ODO_DIRECTION = Encoder.REVERSE;
 }

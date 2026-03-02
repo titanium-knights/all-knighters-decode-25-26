@@ -17,8 +17,8 @@ class OuttakeKT(hmap: HardwareMap, telemetry: Telemetry) {
         this.outtakeRight = hmap.dcMotor.get(CONFIG.OUTTAKE_RIGHT)
         this.outtakeLeft.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
         this.outtakeRight.zeroPowerBehavior = DcMotor.ZeroPowerBehavior.FLOAT
-        this.outtakeLeft.direction = DcMotorSimple.Direction.REVERSE
-        this.outtakeRight.direction = DcMotorSimple.Direction.FORWARD
+        this.outtakeLeft.direction = CONFIG.OUT_L_DIRECTION
+        this.outtakeRight.direction = CONFIG.OUT_R_DIRECTION
         Companion.telemetry = telemetry
     }
 

@@ -16,6 +16,10 @@ public class Constants {
 
     public static FollowerConstants followerConstants =
             new FollowerConstants()
+                    .lateralZeroPowerAcceleration(
+                            (-76.7222356679041 - 85.99500753658874 - 107.29585165635946) / 3)
+                    .forwardZeroPowerAcceleration(
+                            (-56.16911319356693 - 55.67726496461103 - 44.81693132852102) / 3)
                     .translationalPIDFCoefficients(new PIDFCoefficients(0.1, 0.0004, 0.01, 0))
                     .headingPIDFCoefficients(new PIDFCoefficients(1.5, 0.1, 0, 0.01))
                     .drivePIDFCoefficients(
@@ -31,24 +35,23 @@ public class Constants {
                     .rightFrontMotorDirection(CONFIG.FR_DIRECTION)
                     .leftRearMotorDirection(CONFIG.BL_DIRECTION)
                     .rightRearMotorDirection(CONFIG.BR_DIRECTION)
-                    .xVelocity((71.73591741450626 + 72.86681658956445 + 71.261306270706) / 3)
-                    .yVelocity((52.945704383231075 + 53.004110379356305 + 52.36135792874717) / 3);
+                    .xVelocity((75.27824375857799 + 73.00715602474443 + 73.31933500010989) / 3)
+                    .yVelocity((42.36875602081255 + 41.14756847098387 + 40.924077508898066) / 3);
 
     public static ThreeWheelConstants localizerConstants =
             new ThreeWheelConstants()
                     .forwardTicksToInches(
-                            (0.001997477706295442 + 0.002001019562158589 + 0.001997147738848221)
+                            (0.001987052088226984 + 0.001989133492595857 + 0.001984533693417579)
                                     / 3)
                     .strafeTicksToInches(
-                            (0.002003851615776408 + 0.002118880363535722 + 0.002012519127441897)
+                            (-0.001995202497433042 - 0.001987463633665086 - 0.0020004462865510614)
                                     / 3)
                     .turnTicksToInches(
-                            // (0.0020590062456552244 + 0.004117539736164494 + 0.004129549753816808)
-                            // (0.004132563213329115 + 0.004134151011851167 + 0.004135263196981174)
-                            (0.004117539736164494 + 0.004129549753816808) / 2)
-                    .leftPodY((17.0 / 2) - 4.375)
-                    .rightPodY(-1 * (17.0 / 2) - 4.5)
-                    .strafePodX((17.0 / 2.0) - 8)
+                            (0.0019551097481992053 + 0.001956078995241521 + 0.0019529899884137625)
+                                    / 3)
+                    .leftPodY((16.0 / 2) - 1.4375)
+                    .rightPodY(-1 * ((16.0 / 2) - 1.375))
+                    .strafePodX(-1 * ((17.0 / 2.0) - 2.875))
                     .leftEncoder_HardwareMapName(CONFIG.LEFT_ODO)
                     .rightEncoder_HardwareMapName(CONFIG.RIGHT_ODO)
                     .strafeEncoder_HardwareMapName(CONFIG.BACK_ODO)
@@ -60,7 +63,7 @@ public class Constants {
 
     public static Follower createFollower(HardwareMap hardwareMap) {
         return new FollowerBuilder(followerConstants, hardwareMap)
-                .pathConstraints(pathConstraints)
+                //                .pathConstraints(pathConstraints)
                 .mecanumDrivetrain(driveConstants)
                 .threeWheelLocalizer(localizerConstants)
                 .build();

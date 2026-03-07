@@ -45,11 +45,11 @@ public class CONFIG {
 
 
     public static final String LEFT_ODO = BACK_LEFT; // c0
-    public  static  final double LEFT_ODO_DIRECTION = Encoder.REVERSE;
+    public  static  final double LEFT_ODO_DIRECTION = Encoder.FORWARD;
 
     public static final String RIGHT_ODO = OUTTAKE_LEFT; //e3
-    public static final double RIGHT_ODO_DIRECTION = Encoder.REVERSE;
+    public static final double RIGHT_ODO_DIRECTION = Encoder.FORWARD;
 
     public static final String BACK_ODO = BACK_RIGHT; // c3
-    public static final double BACK_ODO_DIRECTION = Encoder.REVERSE;
+    public static final double BACK_ODO_DIRECTION = Encoder.FORWARD;
 }

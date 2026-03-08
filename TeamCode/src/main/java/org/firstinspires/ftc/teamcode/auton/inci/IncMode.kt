@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.auton.inci
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode
 import com.qualcomm.robotcore.util.ElapsedTime
+import org.firstinspires.ftc.teamcode.utilities.OuttakeKT.Companion.OUTTAKE_STOPPING_POWER
 import org.firstinspires.ftc.teamcode.utilities.SubsystemManager
 
 open class IncMode : OpMode() {
@@ -37,8 +38,13 @@ open class IncMode : OpMode() {
 
 
     /** non-blocking methods below */
-    fun intakeStart() {
+    @JvmOverloads
+    fun intakeStart(override: Double = 0.9) {
         subsystemManager!!.intake.intakeRun();
+    }
+
+    fun intakeReverse() {
+        subsystemManager!!.intake.intakeReversed();
     }
 
 

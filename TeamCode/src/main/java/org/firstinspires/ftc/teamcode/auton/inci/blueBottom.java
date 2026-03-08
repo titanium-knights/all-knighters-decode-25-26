@@ -134,11 +134,13 @@ public class blueBottom extends IncMode {
             follower.followPath(ScoreHOME);
             currentPath = ScoreHOME;
             counter = 1;
+
         } else if (counter == 1 && finishedPath(ScoreHOME)) {
             outtakeStart();
             pathTimer.resetTimer();
             counter = 101;
-        } else if (counter == 101 && pathTimer.getElapsedTimeSeconds() > 5) {
+
+        } else if (counter == 101) {
             if (pathTimer.getElapsedTimeSeconds() > 10) {
                 outtakeStop();
                 intakeStop();
@@ -148,76 +150,118 @@ public class blueBottom extends IncMode {
             } else if (pathTimer.getElapsedTimeSeconds() > 7.5) {
                 intakeStart();
             }
-//        } else if (counter == 2 && finishedPath(ScoreGroupC)) {
-//            intakeStart();
-//            follower.followPath(ScoreGroupC1);
-//            currentPath = ScoreGroupC1;
-//            counter = 3;
-//        } else if (counter == 3 && finishedPath(ScoreGroupC1)) {
-//            follower.followPath(ScoreGroupC2);
-//            currentPath = ScoreGroupC2;
-//            counter = 4;
-//        } else if (counter == 4 && finishedPath(ScoreGroupC2)) {
-//            follower.followPath(ScoreGroupC3);
-//            currentPath = ScoreGroupC3;
-//            counter = 5;
-//        } else if (counter == 5 && finishedPath(ScoreGroupC3)) {
-//            intakeStop();
-//            follower.followPath(ScoreGroupCShoot);
-//            currentPath = ScoreGroupCShoot;
-//            counter = 6;
-//        } else if (counter == 6 && finishedPath(ScoreGroupCShoot)) {
-//            outtakeStart();
-//            outtakeStop();
-//            follower.followPath(ScoreGroupB);
-//            currentPath = ScoreGroupB;
-//            counter = 7;
-//        } else if (counter == 7 && finishedPath(ScoreGroupB)) {
-//            intakeStart();
-//            follower.followPath(ScoreGroupB1);
-//            currentPath = ScoreGroupB1;
-//            counter = 8;
-//        } else if (counter == 8 && finishedPath(ScoreGroupB1)) {
-//            follower.followPath(ScoreGroupB2);
-//            currentPath = ScoreGroupB2;
-//            counter = 9;
-//        } else if (counter == 9 && finishedPath(ScoreGroupB2)) {
-//            follower.followPath(ScoreGroupB3);
-//            currentPath = ScoreGroupB3;
-//            counter = 10;
-//        } else if (counter == 10 && finishedPath(ScoreGroupB3)) {
-//            intakeStop();
-//            follower.followPath(ScoreGroupBShoot);
-//            currentPath = ScoreGroupBShoot;
-//            counter = 11;
-//        } else if (counter == 11 && finishedPath(ScoreGroupBShoot)) {
-//            outtakeStart();
-//            outtakeStop();
-//            follower.followPath(ScoreGroupA);
-//            currentPath = ScoreGroupA;
-//            counter = 12;
-//        } else if (counter == 12 && finishedPath(ScoreGroupA)) {
-//            intakeStart();
-//            follower.followPath(ScoreGroupA1);
-//            currentPath = ScoreGroupA1;
-//            counter = 13;
-//        } else if (counter == 13 && finishedPath(ScoreGroupA1)) {
-//            follower.followPath(ScoreGroupA2);
-//            currentPath = ScoreGroupA2;
-//            counter = 14;
-//        } else if (counter == 14 && finishedPath(ScoreGroupA2)) {
-//            follower.followPath(ScoreGroupA3);
-//            currentPath = ScoreGroupA3;
-//            counter = 15;
-//        } else if (counter == 15 && finishedPath(ScoreGroupA3)) {
-//            intakeStop();
-//            follower.followPath(ScoreGroupAShoot);
-//            currentPath = ScoreGroupAShoot;
-//            counter = 16;
-//        } else if (counter == 16 && finishedPath(ScoreGroupAShoot)) {
-//            outtakeStart();
-//            outtakeStop();
-//            counter = 17; // done
+
+        } else if (counter == 2 && finishedPath(ScoreGroupC)) {
+            intakeStart();
+            follower.followPath(ScoreGroupC1);
+            currentPath = ScoreGroupC1;
+            counter = 3;
+
+        } else if (counter == 3 && finishedPath(ScoreGroupC1)) {
+            follower.followPath(ScoreGroupC2);
+            currentPath = ScoreGroupC2;
+            counter = 4;
+
+        } else if (counter == 4 && finishedPath(ScoreGroupC2)) {
+            follower.followPath(ScoreGroupC3);
+            currentPath = ScoreGroupC3;
+            counter = 5;
+
+        } else if (counter == 5 && finishedPath(ScoreGroupC3)) {
+            intakeStop();
+            follower.followPath(ScoreGroupCShoot);
+            currentPath = ScoreGroupCShoot;
+            counter = 6;
+
+        } else if (counter == 6 && finishedPath(ScoreGroupCShoot)) {
+            outtakeStart();
+            pathTimer.resetTimer();
+            counter = 102;
+
+        } else if (counter == 102) {
+            if (pathTimer.getElapsedTimeSeconds() > 10) {
+                outtakeStop();
+                intakeStop();
+                follower.followPath(ScoreGroupB);
+                currentPath = ScoreGroupB;
+                counter = 7;
+            } else if (pathTimer.getElapsedTimeSeconds() > 7.5) {
+                intakeStart();
+            }
+
+        } else if (counter == 7 && finishedPath(ScoreGroupB)) {
+            intakeStart();
+            follower.followPath(ScoreGroupB1);
+            currentPath = ScoreGroupB1;
+            counter = 8;
+
+        } else if (counter == 8 && finishedPath(ScoreGroupB1)) {
+            follower.followPath(ScoreGroupB2);
+            currentPath = ScoreGroupB2;
+            counter = 9;
+
+        } else if (counter == 9 && finishedPath(ScoreGroupB2)) {
+            follower.followPath(ScoreGroupB3);
+            currentPath = ScoreGroupB3;
+            counter = 10;
+
+        } else if (counter == 10 && finishedPath(ScoreGroupB3)) {
+            intakeStop();
+            follower.followPath(ScoreGroupBShoot);
+            currentPath = ScoreGroupBShoot;
+            counter = 11;
+
+        } else if (counter == 11 && finishedPath(ScoreGroupBShoot)) {
+            outtakeStart();
+            pathTimer.resetTimer();
+            counter = 103;
+
+        } else if (counter == 103) {
+            if (pathTimer.getElapsedTimeSeconds() > 10) {
+                outtakeStop();
+                intakeStop();
+                follower.followPath(ScoreGroupA);
+                currentPath = ScoreGroupA;
+                counter = 12;
+            } else if (pathTimer.getElapsedTimeSeconds() > 7.5) {
+                intakeStart();
+            }
+
+        } else if (counter == 12 && finishedPath(ScoreGroupA)) {
+            intakeStart();
+            follower.followPath(ScoreGroupA1);
+            currentPath = ScoreGroupA1;
+            counter = 13;
+
+        } else if (counter == 13 && finishedPath(ScoreGroupA1)) {
+            follower.followPath(ScoreGroupA2);
+            currentPath = ScoreGroupA2;
+            counter = 14;
+
+        } else if (counter == 14 && finishedPath(ScoreGroupA2)) {
+            follower.followPath(ScoreGroupA3);
+            currentPath = ScoreGroupA3;
+            counter = 15;
+
+        } else if (counter == 15 && finishedPath(ScoreGroupA3)) {
+            intakeStop();
+            follower.followPath(ScoreGroupAShoot);
+            currentPath = ScoreGroupAShoot;
+            counter = 16;
+
+        } else if (counter == 16 && finishedPath(ScoreGroupAShoot)) {
+            outtakeStart();
+            pathTimer.resetTimer();
+            counter = 104;
+
+        } else if (counter == 104) {
+            if (pathTimer.getElapsedTimeSeconds() > 10) {
+                outtakeStop();
+                intakeStop();
+                counter = 17;
+            } else if (pathTimer.getElapsedTimeSeconds() > 7.5) {
+                intakeStart();
+            }
         }
     }
 

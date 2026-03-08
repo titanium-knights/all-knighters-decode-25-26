@@ -14,20 +14,20 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 @Autonomous(name = "blueBottom")
 public class blueBottom extends IncMode {
     private final Pose StartBottom_BLUE = new Pose(65, 0, Math.toRadians(90));
-    private final Pose ShootBottom_BLUE = new Pose(65, 100, Math.toRadians(135));
-    private final Pose PositionC_BLUE = new Pose(96, 30, Math.toRadians(270));
-    private final Pose groupCPickUp1_BLUE = new Pose(45, 30, Math.toRadians(270));
-    private final Pose groupCPickUp2_BLUE = new Pose(35, 30, Math.toRadians(270));
-    private final Pose groupCPickUp3_BLUE = new Pose(25, 30, Math.toRadians(270));
-    private final Pose PositionB_BLUE = new Pose(96, 54, Math.toRadians(270));
-    private final Pose groupBPickUp1_BLUE = new Pose(45, 54, Math.toRadians(270));
-    private final Pose groupBPickUp2_BLUE = new Pose(35, 54, Math.toRadians(270));
-    private final Pose groupBPickUp3_BLUE = new Pose(25, 54, Math.toRadians(270));
-    private final Pose PositionA_BLUE = new Pose(96, 78, Math.toRadians(270));
-    private final Pose groupAPickUp1_BLUE = new Pose(45, 78, Math.toRadians(270));
-    private final Pose groupAPickUp2_BLUE = new Pose(35, 78, Math.toRadians(270));
-    private final Pose groupAPickUp3_BLUE = new Pose(25, 78, Math.toRadians(270));
-    private final Pose shootAtBasket_BLUE = new Pose(74, 74, Math.toRadians(45));
+    private final Pose ShootBottom_BLUE = new Pose(65, 100, Math.toRadians(-45));
+    private final Pose PositionC_BLUE = new Pose(60, 78, Math.toRadians(180));
+    private final Pose groupCPickUp1_BLUE = new Pose(45, 78, Math.toRadians(180));
+    private final Pose groupCPickUp2_BLUE = new Pose(35, 78, Math.toRadians(180));
+    private final Pose groupCPickUp3_BLUE = new Pose(25, 78, Math.toRadians(180));
+    private final Pose PositionB_BLUE = new Pose(96, 54, Math.toRadians(180));
+    private final Pose groupBPickUp1_BLUE = new Pose(45, 54, Math.toRadians(180));
+    private final Pose groupBPickUp2_BLUE = new Pose(35, 54, Math.toRadians(180));
+    private final Pose groupBPickUp3_BLUE = new Pose(25, 54, Math.toRadians(180));
+    private final Pose PositionA_BLUE = new Pose(96, 30, Math.toRadians(180));
+    private final Pose groupAPickUp1_BLUE = new Pose(45, 30, Math.toRadians(180));
+    private final Pose groupAPickUp2_BLUE = new Pose(35, 30, Math.toRadians(180));
+    private final Pose groupAPickUp3_BLUE = new Pose(25, 30, Math.toRadians(180));
+    private final Pose shootAtBasket_BLUE = ShootBottom_BLUE;
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
     private PathChain ScoreHOME, ScoreGroupC, ScoreGroupC1, ScoreGroupC2, ScoreGroupC3, ScoreGroupCShoot, ScoreGroupB, ScoreGroupB1,
@@ -135,79 +135,89 @@ public class blueBottom extends IncMode {
             currentPath = ScoreHOME;
             counter = 1;
         } else if (counter == 1 && finishedPath(ScoreHOME)) {
-            follower.followPath(ScoreGroupC);
-            currentPath = ScoreGroupC;
-            counter = 2;
-        } else if (counter == 2 && finishedPath(ScoreGroupC)) {
-            intakeStart();
-            follower.followPath(ScoreGroupC1);
-            currentPath = ScoreGroupC1;
-            counter = 3;
-        } else if (counter == 3 && finishedPath(ScoreGroupC1)) {
-            follower.followPath(ScoreGroupC2);
-            currentPath = ScoreGroupC2;
-            counter = 4;
-        } else if (counter == 4 && finishedPath(ScoreGroupC2)) {
-            follower.followPath(ScoreGroupC3);
-            currentPath = ScoreGroupC3;
-            counter = 5;
-        } else if (counter == 5 && finishedPath(ScoreGroupC3)) {
-            intakeStop();
-            follower.followPath(ScoreGroupCShoot);
-            currentPath = ScoreGroupCShoot;
-            counter = 6;
-        } else if (counter == 6 && finishedPath(ScoreGroupCShoot)) {
             outtakeStart();
-            outtakeStop();
-            follower.followPath(ScoreGroupB);
-            currentPath = ScoreGroupB;
-            counter = 7;
-        } else if (counter == 7 && finishedPath(ScoreGroupB)) {
-            intakeStart();
-            follower.followPath(ScoreGroupB1);
-            currentPath = ScoreGroupB1;
-            counter = 8;
-        } else if (counter == 8 && finishedPath(ScoreGroupB1)) {
-            follower.followPath(ScoreGroupB2);
-            currentPath = ScoreGroupB2;
-            counter = 9;
-        } else if (counter == 9 && finishedPath(ScoreGroupB2)) {
-            follower.followPath(ScoreGroupB3);
-            currentPath = ScoreGroupB3;
-            counter = 10;
-        } else if (counter == 10 && finishedPath(ScoreGroupB3)) {
-            intakeStop();
-            follower.followPath(ScoreGroupBShoot);
-            currentPath = ScoreGroupBShoot;
-            counter = 11;
-        } else if (counter == 11 && finishedPath(ScoreGroupBShoot)) {
-            outtakeStart();
-            outtakeStop();
-            follower.followPath(ScoreGroupA);
-            currentPath = ScoreGroupA;
-            counter = 12;
-        } else if (counter == 12 && finishedPath(ScoreGroupA)) {
-            intakeStart();
-            follower.followPath(ScoreGroupA1);
-            currentPath = ScoreGroupA1;
-            counter = 13;
-        } else if (counter == 13 && finishedPath(ScoreGroupA1)) {
-            follower.followPath(ScoreGroupA2);
-            currentPath = ScoreGroupA2;
-            counter = 14;
-        } else if (counter == 14 && finishedPath(ScoreGroupA2)) {
-            follower.followPath(ScoreGroupA3);
-            currentPath = ScoreGroupA3;
-            counter = 15;
-        } else if (counter == 15 && finishedPath(ScoreGroupA3)) {
-            intakeStop();
-            follower.followPath(ScoreGroupAShoot);
-            currentPath = ScoreGroupAShoot;
-            counter = 16;
-        } else if (counter == 16 && finishedPath(ScoreGroupAShoot)) {
-            outtakeStart();
-            outtakeStop();
-            counter = 17; // done
+            pathTimer.resetTimer();
+            counter = 101;
+        } else if (counter == 101 && pathTimer.getElapsedTimeSeconds() > 5) {
+            if (pathTimer.getElapsedTimeSeconds() > 10) {
+                outtakeStop();
+                intakeStop();
+                follower.followPath(ScoreGroupC);
+                currentPath = ScoreGroupC;
+                counter = 2;
+            } else if (pathTimer.getElapsedTimeSeconds() > 7.5) {
+                intakeStart();
+            }
+//        } else if (counter == 2 && finishedPath(ScoreGroupC)) {
+//            intakeStart();
+//            follower.followPath(ScoreGroupC1);
+//            currentPath = ScoreGroupC1;
+//            counter = 3;
+//        } else if (counter == 3 && finishedPath(ScoreGroupC1)) {
+//            follower.followPath(ScoreGroupC2);
+//            currentPath = ScoreGroupC2;
+//            counter = 4;
+//        } else if (counter == 4 && finishedPath(ScoreGroupC2)) {
+//            follower.followPath(ScoreGroupC3);
+//            currentPath = ScoreGroupC3;
+//            counter = 5;
+//        } else if (counter == 5 && finishedPath(ScoreGroupC3)) {
+//            intakeStop();
+//            follower.followPath(ScoreGroupCShoot);
+//            currentPath = ScoreGroupCShoot;
+//            counter = 6;
+//        } else if (counter == 6 && finishedPath(ScoreGroupCShoot)) {
+//            outtakeStart();
+//            outtakeStop();
+//            follower.followPath(ScoreGroupB);
+//            currentPath = ScoreGroupB;
+//            counter = 7;
+//        } else if (counter == 7 && finishedPath(ScoreGroupB)) {
+//            intakeStart();
+//            follower.followPath(ScoreGroupB1);
+//            currentPath = ScoreGroupB1;
+//            counter = 8;
+//        } else if (counter == 8 && finishedPath(ScoreGroupB1)) {
+//            follower.followPath(ScoreGroupB2);
+//            currentPath = ScoreGroupB2;
+//            counter = 9;
+//        } else if (counter == 9 && finishedPath(ScoreGroupB2)) {
+//            follower.followPath(ScoreGroupB3);
+//            currentPath = ScoreGroupB3;
+//            counter = 10;
+//        } else if (counter == 10 && finishedPath(ScoreGroupB3)) {
+//            intakeStop();
+//            follower.followPath(ScoreGroupBShoot);
+//            currentPath = ScoreGroupBShoot;
+//            counter = 11;
+//        } else if (counter == 11 && finishedPath(ScoreGroupBShoot)) {
+//            outtakeStart();
+//            outtakeStop();
+//            follower.followPath(ScoreGroupA);
+//            currentPath = ScoreGroupA;
+//            counter = 12;
+//        } else if (counter == 12 && finishedPath(ScoreGroupA)) {
+//            intakeStart();
+//            follower.followPath(ScoreGroupA1);
+//            currentPath = ScoreGroupA1;
+//            counter = 13;
+//        } else if (counter == 13 && finishedPath(ScoreGroupA1)) {
+//            follower.followPath(ScoreGroupA2);
+//            currentPath = ScoreGroupA2;
+//            counter = 14;
+//        } else if (counter == 14 && finishedPath(ScoreGroupA2)) {
+//            follower.followPath(ScoreGroupA3);
+//            currentPath = ScoreGroupA3;
+//            counter = 15;
+//        } else if (counter == 15 && finishedPath(ScoreGroupA3)) {
+//            intakeStop();
+//            follower.followPath(ScoreGroupAShoot);
+//            currentPath = ScoreGroupAShoot;
+//            counter = 16;
+//        } else if (counter == 16 && finishedPath(ScoreGroupAShoot)) {
+//            outtakeStart();
+//            outtakeStop();
+//            counter = 17; // done
         }
     }
 

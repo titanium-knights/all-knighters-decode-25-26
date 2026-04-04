@@ -9,23 +9,32 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.auton.inci.IncMode;
 import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
+
 // import org.firstinspires.ftc.teamcode.utilities.Intake;
 
 @Autonomous(name = "RedPLBottom")
 public class RedPLBottom extends IncMode {
-    private final Pose StartBottom = new Pose(79, 0, Math.toRadians(90));
-    private final Pose ShootBottom = new Pose(79, 100, Math.toRadians(45));
+    private final Pose StartTop = new Pose(123.96554587462938, -67.99473835560438, -2.2985357243568507);
+    private final Pose ShootTop = new Pose(62.610831, -7.58995288, 0.29);
+    private final Pose LeaveTriangle = new Pose(62.610831, -7.58995288 - 6.7, 0.29);
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
-    private PathChain Score;
+    private PathChain Score, Exit;
     private int counter = 0;
     private PathChain currentPath;
 
-    public void buildPaths(){
-        Score = follower.pathBuilder()
-                .addPath(new BezierLine(StartBottom, ShootBottom))
-                .setLinearHeadingInterpolation(StartBottom.getHeading(), ShootBottom.getHeading())
-                .build();
+    public void buildPaths() {
+        Score =
+                follower.pathBuilder()
+                        .addPath(new BezierLine(StartTop, ShootTop))
+                        .setLinearHeadingInterpolation(StartTop.getHeading(), ShootTop.getHeading())
+                        .build();
+        Exit =
+                follower.pathBuilder()
+                        .addPath(new BezierLine(ShootTop, LeaveTriangle))
+                        .setLinearHeadingInterpolation(ShootTop.getHeading(), LeaveTriangle.getHeading())
+                        .build();
+
     }
 
     private boolean finishedPath(PathChain path) {
@@ -46,43 +55,32 @@ public class RedPLBottom extends IncMode {
             pathTimer.resetTimer();
             counter = 101;
         } else if (counter == 101) {
-            if (pathTimer.getElapsedTimeSeconds() > 9.5) {
+            if (pathTimer.getElapsedTimeSeconds() > 12) {
                 outtakeStop();
                 intakeStop();
                 counter = 2;
-            } else if (pathTimer.getElapsedTimeSeconds() > 9) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 8.5) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 9.9) {
+                intakeStart(1.0);
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.9) {
                 intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 8) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 7.5) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.7) {
+                intakeReverse();
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.35) {
                 intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 7) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.3) {
                 intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 6.5) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 3.2) {
                 intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 6) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 5.5) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 5) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 4.5) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 4) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 3.5) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 3) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 3.1) {
                 intakeStart();
             }
-
-        } else if (counter == 2) {
-            follower.holdPoint(ShootBottom);
+        }else if (counter == 2) {
+            follower.followPath(Exit);
+            counter = 3;
+        } else if (counter == 3) {
+            follower.holdPoint(LeaveTriangle);
         }
     }
-
 
     @Override
     public void loop() {
@@ -92,9 +90,18 @@ public class RedPLBottom extends IncMode {
 
         // Feedback to Driver Hub
         telemetry.addData("path state", counter);
-        telemetry.addLine(String.format("x: %.2f -> %.2f", follower.getPose().getX(), currentPath.endPose().getX()));
-        telemetry.addLine(String.format("y: %.2f -> %.2f", follower.getPose().getY(), currentPath.endPose().getY()));
-        telemetry.addLine(String.format("h: %.2f -> %.2f", follower.getPose().getHeading(), currentPath.endPose().getHeading()));
+        telemetry.addLine(
+                String.format(
+                        "x: %.2f -> %.2f",
+                        follower.getPose().getX(), currentPath.endPose().getX()));
+        telemetry.addLine(
+                String.format(
+                        "y: %.2f -> %.2f",
+                        follower.getPose().getY(), currentPath.endPose().getY()));
+        telemetry.addLine(
+                String.format(
+                        "h: %.2f -> %.2f",
+                        follower.getPose().getHeading(), currentPath.endPose().getHeading()));
         telemetry.update();
     }
 
@@ -108,7 +115,7 @@ public class RedPLBottom extends IncMode {
         opmodeTimer.resetTimer();
 
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(StartBottom);
+        follower.setStartingPose(StartTop);
 
         buildPaths();
     }

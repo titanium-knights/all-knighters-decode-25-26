@@ -15,10 +15,11 @@ import org.firstinspires.ftc.teamcode.auton.pedroPathing.Constants;
 @Autonomous(name = "RedPLTop")
 public class RedPLTop extends IncMode {
     private final Pose StartTop = new Pose(0, 0, 0);
-    private final Pose ShootTop = new Pose(62.610831, 9.4874411, 0.157267 * 1.4);
+    private final Pose ShootTop = new Pose(62.610831, 7.58995288, 0.3);
+    private final Pose LeaveTriangle = new Pose(62.610831, 7.58995288 + 6.7, 0.3);
     private Follower follower;
     private Timer pathTimer, actionTimer, opmodeTimer;
-    private PathChain Score;
+    private PathChain Score, Exit;
     private int counter = 0;
     private PathChain currentPath;
 
@@ -28,6 +29,12 @@ public class RedPLTop extends IncMode {
                         .addPath(new BezierLine(StartTop, ShootTop))
                         .setLinearHeadingInterpolation(StartTop.getHeading(), ShootTop.getHeading())
                         .build();
+        Exit =
+                follower.pathBuilder()
+                        .addPath(new BezierLine(ShootTop, LeaveTriangle))
+                        .setLinearHeadingInterpolation(ShootTop.getHeading(), LeaveTriangle.getHeading())
+                        .build();
+
     }
 
     private boolean finishedPath(PathChain path) {
@@ -52,43 +59,27 @@ public class RedPLTop extends IncMode {
                 outtakeStop();
                 intakeStop();
                 counter = 2;
-
-            } else if (pathTimer.getElapsedTimeSeconds() > 11) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 9.9) {
                 intakeStart(1.0);
-            } else if (pathTimer.getElapsedTimeSeconds() > 10.6) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 10.4) {
-                intakeReverse();
-            } else if (pathTimer.getElapsedTimeSeconds() > 10.3) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 9.2) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 9.1) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 8.0) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 7.9) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 6.8) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.9) {
                 intakeStop();
             } else if (pathTimer.getElapsedTimeSeconds() > 6.7) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 5.6) {
+                intakeReverse();
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.35) {
                 intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 5.5) {
-                intakeStart();
-            } else if (pathTimer.getElapsedTimeSeconds() > 4.4) {
-                intakeStop();
-            } else if (pathTimer.getElapsedTimeSeconds() > 4.3) {
+            } else if (pathTimer.getElapsedTimeSeconds() > 6.3) {
                 intakeStart();
             } else if (pathTimer.getElapsedTimeSeconds() > 3.2) {
                 intakeStop();
             } else if (pathTimer.getElapsedTimeSeconds() > 3.1) {
                 intakeStart();
             }
-
-        } else if (counter == 2) {
-            follower.holdPoint(ShootTop);
+        }else if (counter == 2) {
+            follower.followPath(Exit);
+            currentPath = Exit;
+            counter = 3;
+        } else if (counter == 3) {
+            follower.holdPoint(LeaveTriangle);
         }
     }
 

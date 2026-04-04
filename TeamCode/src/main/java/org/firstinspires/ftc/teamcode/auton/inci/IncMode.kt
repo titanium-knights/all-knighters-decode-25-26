@@ -52,8 +52,9 @@ open class IncMode : OpMode() {
         subsystemManager!!.intake.intakeStop();
     }
 
-    fun outtakeStart() {
-        subsystemManager!!.outtake.outtakeRun();
+    @JvmOverloads
+    fun outtakeStart(override: Double = 0.43) {
+        subsystemManager!!.outtake.outtakeRun(override);
     }
 
     fun outtakeStop() {

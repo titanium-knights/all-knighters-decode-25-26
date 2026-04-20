@@ -49,6 +49,7 @@ public class Teleop extends OpMode {
                 subsystemManager.outtake.outtakeKYS();
             } else {
                 subsystemManager.outtake.outtakeStop();
+                // hamburger
             }
         }
 
@@ -63,3 +64,5 @@ public class Teleop extends OpMode {
         }
     }
 }
+
+// yo gurt
